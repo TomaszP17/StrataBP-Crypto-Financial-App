@@ -10,14 +10,17 @@ public abstract class User {
 
     private String email;
 
+    private String password;
 
-    public User(LocalDate dateOfBirth, String name, String lastname, String pesel, String email) {
+
+    public User(LocalDate dateOfBirth, String name, String lastname, String pesel, String email, String password) {
         this.name = name;
         this.lastname = lastname;
         this.dateOfBirth = dateOfBirth;
         this.email = email;
         this.pesel = pesel;
         this.userId = counter;
+        this.password = password;
         counter++;
     }
 
@@ -59,5 +62,13 @@ public abstract class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
