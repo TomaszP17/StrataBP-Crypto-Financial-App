@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 
 public abstract class User {
     private static int counter=1;
@@ -16,7 +17,7 @@ public abstract class User {
         this.dateOfBirth = dateOfBirth;
         this.email = email;
         this.pesel = pesel;
-        this.userId = counter
+        this.userId = counter;
         counter++;
     }
 
@@ -59,18 +60,4 @@ public abstract class User {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public User(LocalDate dateOfBirth, String name, String lastname, String pesel, String email) {
-        this.name = name;
-        this.lastname = lastname;
-        this.dateOfBirth = dateOfBirth;
-        this.email = email;
-        this.pesel = pesel;
-        this.userId = counter
-        counter++;
-    }
-
-
-
-
 }
