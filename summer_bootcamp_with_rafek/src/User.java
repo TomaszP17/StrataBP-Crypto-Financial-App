@@ -7,7 +7,7 @@ public abstract class User {
     private String name;
     private String lastname;
     private String pesel;
-    private String clientNumber;
+
     private String email;
 
 
