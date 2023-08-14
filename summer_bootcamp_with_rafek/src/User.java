@@ -1,6 +1,6 @@
 import java.time.LocalDate;
 
-public abstract class User {
+public class User {
     private static int counter=1;
     private int userId;
     private LocalDate dateOfBirth;
@@ -13,7 +13,7 @@ public abstract class User {
     private String password;
 
 
-    public User(LocalDate dateOfBirth, String name, String lastname, String pesel, String email, String password) {
+    public User(String name, String lastname, LocalDate dateOfBirth, String email, String pesel, String password) {
         this.name = name;
         this.lastname = lastname;
         this.dateOfBirth = dateOfBirth;
