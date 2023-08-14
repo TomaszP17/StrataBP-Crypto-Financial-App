@@ -1,6 +1,7 @@
 import javax.swing.*;
+import java.awt.*;
 
-public class FirstWindow {
+public class FirstWindow extends JFrame{
     private JPanel panel1;
     private JLabel upperLabel;
     private JPanel centerPanel;
@@ -8,4 +9,17 @@ public class FirstWindow {
     private JButton SignUpButton;
     private JButton recoverPassword;
     private JLabel bottomLabel;
+
+    public FirstWindow() {
+        setTitle("STRATA.BP");
+        setContentPane(panel1);
+        setSize(new Dimension(1000, 1000));
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        pack();
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(FirstWindow::new);
+    }
 }
