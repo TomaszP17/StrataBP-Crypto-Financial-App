@@ -19,9 +19,9 @@
         <constraints border-constraint="Center"/>
         <properties>
           <model>
-            <item value="pierwsza kryptowaluta"/>
-            <item value="druga kryptowaluta"/>
-            <item value="trzecia krypto"/>
+            <item value="bitcoin"/>
+            <item value="ethereum"/>
+            <item value="cardano"/>
           </model>
         </properties>
       </component>

@@ -11,4 +11,15 @@ public class SecondWindow {
     private JButton limitsButton;
     private JButton donateButton;
     private JLabel bottomLabel;
+
+    public SecondWindow() {
+
+        //tutaj wyskakuje okienko z informacją do wpisania:
+        //id odbiorcy
+        // ilosc
+        sendButton.addActionListener(e -> {
+            //JOptionPane
+        });
+
+    }
 }
