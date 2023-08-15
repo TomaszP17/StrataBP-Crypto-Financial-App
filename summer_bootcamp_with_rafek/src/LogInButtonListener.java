@@ -6,6 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LogInButtonListener implements ActionListener {
+    private final FirstWindow firstWindow;
+    private final SecondWindow secondWindow;
+
+    public LogInButtonListener(FirstWindow firstWindow, SecondWindow secondWindow) {
+        this.firstWindow = firstWindow;
+        this.secondWindow = secondWindow;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         JPanel panel = createLogInPanel();
