@@ -6,7 +6,7 @@ public class FirstWindow extends JFrame{
     private JLabel upperLabel;
     private JPanel centerPanel;
     private JButton logInButton;
-    private JButton SignUpButton;
+    private JButton signUpButton;
     private JButton recoverPassword;
     private JLabel bottomLabel;
 
@@ -17,6 +17,10 @@ public class FirstWindow extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         pack();
         setVisible(true);
+
+        logInButton.addActionListener(new LogInButtonListener());
+        signUpButton.addActionListener(new SignUpListener());
+        recoverPassword.addActionListener(new RecoverPasswordButtonListener());
     }
 
     public static void main(String[] args) {
