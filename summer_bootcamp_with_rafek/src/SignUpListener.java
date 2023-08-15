@@ -15,9 +15,10 @@ public class SignUpListener implements ActionListener {
         ClientsController clients = new ClientsController();
         JPanel panel = createSignUpPanel();
         List<String> arrayWithParameters;
-        arrayWithParameters = getStringFromFields(panel);
         int result = JOptionPane.showConfirmDialog(null, panel, "Sign Up Panel", JOptionPane.OK_CANCEL_OPTION);
         //String dateOfBirth = arrayWithParameters.get(2);
+
+        arrayWithParameters = getStringFromFields(panel);
 
         if(result == JOptionPane.OK_OPTION){
             clients.clientCreate(arrayWithParameters.get(0),arrayWithParameters.get(1), arrayWithParameters.get(2), arrayWithParameters.get(3),arrayWithParameters.get(4),arrayWithParameters.get(5));

@@ -22,6 +22,14 @@ public class ClientsController {
 
     public Client clientCreate(String name, String lastname, String dateOfBirth, String email, String pesel, String password){
         Client client = new Client(name, lastname, dateOfBirth, email, pesel, password);
+        System.out.println(name);
+        System.out.println(lastname);
+        System.out.println(dateOfBirth);
+        System.out.println(email);
+        System.out.println(pesel);
+        System.out.println(password);
+
+
         clients.add(client);
         return client;
     }
