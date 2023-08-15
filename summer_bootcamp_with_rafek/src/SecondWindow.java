@@ -15,6 +15,7 @@ public class SecondWindow {
     private JLabel userNameLabel;
 
     public SecondWindow() {
+
         limitsButton.addActionListener(new LimitButtonListener());
         sendButton.addActionListener(new SendButtonListener());
 
