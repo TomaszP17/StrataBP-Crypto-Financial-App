@@ -2,13 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class SignUpListener implements ActionListener {
-
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -22,16 +19,9 @@ public class SignUpListener implements ActionListener {
 
         if(result == JOptionPane.OK_OPTION){
             clients.clientCreate(arrayWithParameters.get(0),arrayWithParameters.get(1), arrayWithParameters.get(2), arrayWithParameters.get(3),arrayWithParameters.get(4),arrayWithParameters.get(5));
-//           System.out.println(arrayWithParameters.get(0));
-//          System.out.println(arrayWithParameters.get(1));
-//          System.out.println(arrayWithParameters.get(2));
-//           System.out.println(arrayWithParameters.get(3));
-//           System.out.println(arrayWithParameters.get(4));
-//          System.out.println(arrayWithParameters.get(5));
 
             System.out.println("dsadasd");
             clients.findAll();
-
 
             //HERE WE NEED CREATE CLIENT AND SAVE IT TO DATABASE
             System.out.println(getStringFromFields(panel));
