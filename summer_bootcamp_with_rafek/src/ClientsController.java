@@ -17,6 +17,12 @@ public class ClientsController {
         return clients;
     }
 
+    public Client clientCreate(String name, String lastname, LocalDate dateOfBirth, String email, String pesel, String password){
+        Client client = new Client(name, lastname, dateOfBirth, email, pesel, password);
+        clients.add(client);
+        return client;
+    }
+
 
 
 
