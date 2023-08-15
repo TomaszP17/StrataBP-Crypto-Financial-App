@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 
 public class SecondWindow {
     private JPanel panel1;
@@ -12,6 +11,9 @@ public class SecondWindow {
     private JButton limitsButton;
     private JButton donateButton;
     private JLabel bottomLabel;
+    private JButton logOutButton;
+    private JLabel userNameLabel;
+
     public SecondWindow() {
         limitsButton.addActionListener(new LimitButtonListener());
         sendButton.addActionListener(new SendButtonListener());
