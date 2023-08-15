@@ -12,10 +12,11 @@ public class SignUpListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         JPanel panel = createSignUpPanel();
-        JOptionPane.showMessageDialog(null, panel, "Sign Up Panel", JOptionPane.OK_CANCEL_OPTION);
-        ClientsController clientsController = new ClientsController();
-        List<Client> clientList =  clientsController.findAll();
+        int result = JOptionPane.showConfirmDialog(null, panel, "Sign Up Panel", JOptionPane.OK_CANCEL_OPTION);
 
+        if(result == JOptionPane.OK_OPTION){
+            //HERE WE NEED CREATE CLIENT AND SAVE IT TO DATABASE
+        }
     }
     //maybe here we should have interface with this method because I created two similar method
     public JPanel createSignUpPanel(){
