@@ -11,7 +11,6 @@ public class SecondWindow {
     private JButton limitsButton;
     private JButton donateButton;
     private JLabel bottomLabel;
-
     public SecondWindow() {
 
         //tutaj wyskakuje okienko z informacją do wpisania:
@@ -21,5 +20,9 @@ public class SecondWindow {
             //JOptionPane
         });
 
+    }
+
+    public JPanel getMainPanel(){
+        return panel1;
     }
 }

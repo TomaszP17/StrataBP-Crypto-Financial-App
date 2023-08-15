@@ -6,6 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LogInButtonListener implements ActionListener {
+    private FirstWindow firstWindow;
+    private SecondWindow secondWindow;
+
+    public LogInButtonListener(FirstWindow firstWindow, SecondWindow secondWindow) {
+        this.firstWindow = firstWindow;
+        this.secondWindow = secondWindow;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         JPanel panel = createLogInPanel();
@@ -18,7 +26,7 @@ public class LogInButtonListener implements ActionListener {
             arrayWithParameters = getStringFromFields(panel);
             System.out.println(arrayWithParameters);
             if(arrayWithParameters.get(0).equals("admin") && arrayWithParameters.get(1).equals("admin")){
-                //change Window
+                firstWindow.changeWindow(secondWindow.getMainPanel());
             }
 
         }else{
