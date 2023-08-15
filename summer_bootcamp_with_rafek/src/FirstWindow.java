@@ -15,6 +15,7 @@ public class FirstWindow extends JFrame{
         setSize(new Dimension(1000, 1000));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         pack();
+
         setVisible(true);
 
         SecondWindow secondWindow = new SecondWindow();

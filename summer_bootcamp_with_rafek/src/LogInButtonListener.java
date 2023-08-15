@@ -58,6 +58,8 @@ public class LogInButtonListener implements ActionListener {
 
         return panel;
     }
+
+
     public List<String> getStringFromFields(JPanel panel){
         Component[] components = panel.getComponents();
         List<String> array = new ArrayList<>();
@@ -67,6 +69,10 @@ public class LogInButtonListener implements ActionListener {
                 array.add(rowData);
             }
         }
+
         return array;
     }
+
+
+
 }

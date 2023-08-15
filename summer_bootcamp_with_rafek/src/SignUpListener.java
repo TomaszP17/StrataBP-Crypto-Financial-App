@@ -2,19 +2,36 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class SignUpListener implements ActionListener {
 
-    private ClientsController controller;
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        ClientsController clients = new ClientsController();
         JPanel panel = createSignUpPanel();
+        List<String> arrayWithParameters;
+        arrayWithParameters = getStringFromFields(panel);
         int result = JOptionPane.showConfirmDialog(null, panel, "Sign Up Panel", JOptionPane.OK_CANCEL_OPTION);
+        //String dateOfBirth = arrayWithParameters.get(2);
 
         if(result == JOptionPane.OK_OPTION){
+            clients.clientCreate(arrayWithParameters.get(0),arrayWithParameters.get(1), arrayWithParameters.get(2), arrayWithParameters.get(3),arrayWithParameters.get(4),arrayWithParameters.get(5));
+//           System.out.println(arrayWithParameters.get(0));
+//          System.out.println(arrayWithParameters.get(1));
+//          System.out.println(arrayWithParameters.get(2));
+//           System.out.println(arrayWithParameters.get(3));
+//           System.out.println(arrayWithParameters.get(4));
+//          System.out.println(arrayWithParameters.get(5));
+
+            System.out.println("dsadasd");
+            clients.findAll();
+
+
             //HERE WE NEED CREATE CLIENT AND SAVE IT TO DATABASE
         }
     }
@@ -50,6 +67,8 @@ public class SignUpListener implements ActionListener {
 
         return panel;
     }
+
+
     public List<String> getStringFromFields(JPanel panel){
         Component[] components = panel.getComponents();
         List<String> array = new ArrayList<>();
@@ -60,6 +79,7 @@ public class SignUpListener implements ActionListener {
                 System.out.println(rowData);
             }
         }
+        System.out.println(array);
         return array;
     }
 

@@ -3,7 +3,7 @@ import java.time.LocalDate;
 public class User {
     private static int counter=1;
     private int userId;
-    private LocalDate dateOfBirth;
+    private String dateOfBirth;
     private String name;
     private String lastname;
     private String pesel;
@@ -13,7 +13,7 @@ public class User {
     private String password;
 
 
-    public User(String name, String lastname, LocalDate dateOfBirth, String email, String pesel, String password) {
+    public User(String name, String lastname, String dateOfBirth, String email, String pesel, String password) {
         this.name = name;
         this.lastname = lastname;
         this.dateOfBirth = dateOfBirth;
@@ -24,11 +24,11 @@ public class User {
         counter++;
     }
 
-    public LocalDate getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -70,5 +70,18 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
+                ", name='" + name + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", pesel='" + pesel + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }
