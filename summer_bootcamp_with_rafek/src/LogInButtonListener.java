@@ -1,13 +1,29 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+
 public class LogInButtonListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         JPanel panel = createLogInPanel();
-        JOptionPane.showMessageDialog(null, panel, "LogIn option", JOptionPane.OK_CANCEL_OPTION);
-        //here handle client controller and saving to file
+        int result = JOptionPane.showConfirmDialog(null, panel, "LogIn option", JOptionPane.OK_CANCEL_OPTION);
+        List<String> arrayWithParameters;
+        if(result == JOptionPane.OK_OPTION){
 
+            System.out.println("Clicked OK!");
+            //check if fields are good filled and
+            arrayWithParameters = getStringFromFields(panel);
+            System.out.println(arrayWithParameters);
+            if(arrayWithParameters.get(0).equals("admin") && arrayWithParameters.get(1).equals("admin")){
+                //change Window
+            }
+
+        }else{
+            System.out.println("Clicked CANCEL!");
+        }
     }
     public JPanel createLogInPanel(){
         JPanel panel = new JPanel();
@@ -22,5 +38,16 @@ public class LogInButtonListener implements ActionListener {
         panel.add(passwordField);
 
         return panel;
+    }
+    public List<String> getStringFromFields(JPanel panel){
+        Component[] components = panel.getComponents();
+        List<String> array = new ArrayList<>();
+        for(Component x : components){
+            if(x instanceof JTextField){
+                String rowData = ((JTextField) x).getText();
+                array.add(rowData);
+            }
+        }
+        return array;
     }
 }

@@ -2,11 +2,20 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+
 public class SignUpListener implements ActionListener {
+
+    private ClientsController controller;
+
     @Override
     public void actionPerformed(ActionEvent e) {
         JPanel panel = createSignUpPanel();
         JOptionPane.showMessageDialog(null, panel, "Sign Up Panel", JOptionPane.OK_CANCEL_OPTION);
+        ClientsController clientsController = new ClientsController();
+        List<Client> clientList =  clientsController.findAll();
+
     }
     //maybe here we should have interface with this method because I created two similar method
     public JPanel createSignUpPanel(){
@@ -40,5 +49,17 @@ public class SignUpListener implements ActionListener {
 
         return panel;
     }
+    public List<String> getStringFromFields(JPanel panel){
+        Component[] components = panel.getComponents();
+        List<String> array = new ArrayList<>();
+        for(Component x : components){
+            if(x instanceof JTextField){
+                String rowData = ((JTextField) x).getText();
+                array.add(rowData);
+            }
+        }
+        return array;
+    }
+
 
 }
