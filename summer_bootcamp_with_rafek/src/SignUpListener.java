@@ -16,6 +16,7 @@ public class SignUpListener implements ActionListener {
 
         if(result == JOptionPane.OK_OPTION){
             //HERE WE NEED CREATE CLIENT AND SAVE IT TO DATABASE
+            System.out.println(getStringFromFields(panel));
         }
     }
     //maybe here we should have interface with this method because I created two similar method
@@ -57,7 +58,7 @@ public class SignUpListener implements ActionListener {
             if(x instanceof JTextField){
                 String rowData = ((JTextField) x).getText();
                 array.add(rowData);
-                System.out.println(rowData);
+
             }
         }
         return array;
