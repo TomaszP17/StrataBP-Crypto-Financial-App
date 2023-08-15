@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class SecondWindow {
     private JPanel panel1;
@@ -12,16 +13,10 @@ public class SecondWindow {
     private JButton donateButton;
     private JLabel bottomLabel;
     public SecondWindow() {
-
-        //tutaj wyskakuje okienko z informacją do wpisania:
-        //id odbiorcy
-        // ilosc
-        sendButton.addActionListener(e -> {
-            //JOptionPane
-        });
+        limitsButton.addActionListener(new LimitButtonListener());
+        sendButton.addActionListener(new SendButtonListener());
 
     }
-
     public JPanel getMainPanel(){
         return panel1;
     }

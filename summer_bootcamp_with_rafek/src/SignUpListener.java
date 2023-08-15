@@ -57,6 +57,7 @@ public class SignUpListener implements ActionListener {
             if(x instanceof JTextField){
                 String rowData = ((JTextField) x).getText();
                 array.add(rowData);
+                System.out.println(rowData);
             }
         }
         return array;

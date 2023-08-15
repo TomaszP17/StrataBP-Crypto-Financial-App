@@ -28,14 +28,15 @@ public class LogInButtonListener implements ActionListener {
             arrayWithParameters = getStringFromFields(panel);
             System.out.println(arrayWithParameters);
             if(arrayWithParameters.get(0).equals("admin") && arrayWithParameters.get(1).equals("admin")){
-                //change Window
+                firstWindow.changeWindow(secondWindow.getMainPanel());
             }
             Client client = clients.findByEmail(arrayWithParameters.get(0));
             if(client!=null){
                 if(client.getPassword().equals(arrayWithParameters.get(1))){
                     System.out.println("You are Logged in ");
-                }
-                else{
+                    firstWindow.changeWindow(secondWindow.getMainPanel());
+
+                }else{
                     System.out.println("Wrong password!");
                 }
             }
