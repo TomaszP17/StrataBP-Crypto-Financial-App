@@ -6,17 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LogInButtonListener implements ActionListener {
-    private FirstWindow firstWindow;
-    private SecondWindow secondWindow;
-
-    public LogInButtonListener(FirstWindow firstWindow, SecondWindow secondWindow) {
-        this.firstWindow = firstWindow;
-        this.secondWindow = secondWindow;
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         JPanel panel = createLogInPanel();
+        ClientsController clients = new ClientsController();
+
         int result = JOptionPane.showConfirmDialog(null, panel, "LogIn option", JOptionPane.OK_CANCEL_OPTION);
         List<String> arrayWithParameters;
         if(result == JOptionPane.OK_OPTION){
@@ -26,9 +20,17 @@ public class LogInButtonListener implements ActionListener {
             arrayWithParameters = getStringFromFields(panel);
             System.out.println(arrayWithParameters);
             if(arrayWithParameters.get(0).equals("admin") && arrayWithParameters.get(1).equals("admin")){
-                firstWindow.changeWindow(secondWindow.getMainPanel());
+                //change Window
             }
-
+            Client client = clients.findByEmail(arrayWithParameters.get(0));
+            if(client!=null){
+                if(client.getPassword().equals(arrayWithParameters.get(1))){
+                    System.out.println("You are Logged in ");
+                }
+                else{
+                    System.out.println("Wrong password!");
+                }
+            }
         }else{
             System.out.println("Clicked CANCEL!");
         }

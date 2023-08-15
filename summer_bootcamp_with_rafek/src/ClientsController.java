@@ -22,6 +22,14 @@ public class ClientsController {
         clients.add(client);
         return client;
     }
+    public Client findByEmail( String email){
+        for(Client client : clients){
+            if(client.getEmail().equals(email)){
+                return client;
+            }
+        }
+        return null;
+    }
 
 
 
