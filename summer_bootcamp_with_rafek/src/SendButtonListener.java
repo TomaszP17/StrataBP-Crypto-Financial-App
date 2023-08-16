@@ -14,7 +14,7 @@ public class SendButtonListener implements ActionListener {
         if(result == JOptionPane.OK_OPTION){
             Client client1 = ClientsController.findClientByUser(User.getCurrentUser());
             // client2 = ClientsController.findByEmail();
-
+            getStringFromFields(panel);
            // ClientsController.sendFromTo(client1, client2);
 
         }
@@ -53,7 +53,7 @@ public class SendButtonListener implements ActionListener {
                 array.add(rowData);
             } else if (x instanceof JComboBox<?>) {
                 JComboBox<Cryptocurrency> comboBox = (JComboBox<Cryptocurrency>) x;
-                String data = ((JComboBox<?>) x).getSelectedItem().toString();
+                String data = ((Cryptocurrency) comboBox.getSelectedItem()).getKey();
                 array.add(data);
             }
         }

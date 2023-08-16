@@ -10,4 +10,11 @@ public enum Cryptocurrency {
     public String toString() {
         return name;
     }
+
+    /**
+     * Method returns Key of the enum constant
+     */
+    public String getKey(){
+        return name();
+    }
 }
