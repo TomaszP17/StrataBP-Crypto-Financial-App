@@ -11,11 +11,16 @@ public class SendButtonListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         JPanel panel = createSendPanel();
         int result = JOptionPane.showConfirmDialog(null, panel, "Send Money", JOptionPane.OK_CANCEL_OPTION);
+        List<String> arrayWithParameters;
         if(result == JOptionPane.OK_OPTION){
+
+            arrayWithParameters = getStringFromFields(panel);
             Client client1 = ClientsController.findClientByUser(User.getCurrentUser());
-            // client2 = ClientsController.findByEmail();
+            Client client2 = ClientsController.findByEmail(arrayWithParameters.get(2).toString());
             getStringFromFields(panel);
-           // ClientsController.sendFromTo(client1, client2);
+            String keyCrypto = arrayWithParameters.get(0).toString();
+            double ammount = Double.parseDouble(arrayWithParameters.get(1).toString());
+            ClientsController.sendFromTo(client1.getEmail(), client2.getEmail(), arrayWithParameters.get(0).toString(), ammount);
 
         }
     }

@@ -15,6 +15,14 @@ public class ClientsController {
         clients.add(new Client("test", "Przybyl", "12-33-00",
                 "test","333","test" ));
     }
+
+    public static void sendFromTo(String email, String email1, String keyCrypto, double v) {
+        Client client1 = ClientsController.findByEmail(email);
+        Client client2 = ClientsController.findByEmail(email1);
+        client1.deleteCrypto(keyCrypto, v);
+        client2.addCrypto(keyCrypto, v);
+    }
+
     public List<Client> findAll(){
         for(Client client: clients){
             System.out.println(client.toString());
@@ -31,11 +39,7 @@ public class ClientsController {
         System.out.println(pesel);
         System.out.println(password);
 
-    /*public static void sendFromTo(Client client1, Client client2,String keyOfCrypto, double ammount){
-        client1.deleteCrypto(keyOfCrypto, ammount);
-        client2.addCrypto(keyOfCrypto, ammount);
 
-    }*/
 
 
         clients.add(client);
