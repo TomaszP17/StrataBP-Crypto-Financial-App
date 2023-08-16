@@ -1,7 +1,17 @@
 import java.time.LocalDate;
 
 public class User {
+    private static User currentUser=null;
     private static int counter=1;
+
+    public static User getCurrentUser() {
+        return currentUser;
+    }
+
+    public static void setCurrentUser(User currentUser) {
+        User.currentUser = currentUser;
+    }
+
     private int userId;
     private String dateOfBirth;
     private String name;

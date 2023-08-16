@@ -18,9 +18,18 @@ public class SecondWindow {
 
         limitsButton.addActionListener(new LimitButtonListener());
         sendButton.addActionListener(new SendButtonListener());
+        System.out.println("sadasdas");
+
+
+
 
     }
     public JPanel getMainPanel(){
         return panel1;
+    }
+    public void setCurrentUser(){
+
+            userNameLabel.setText(User.getCurrentUser().getName());
+
     }
 }

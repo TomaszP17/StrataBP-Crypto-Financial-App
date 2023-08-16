@@ -35,6 +35,11 @@ public class LogInButtonListener implements ActionListener {
                 if(client.getPassword().equals(arrayWithParameters.get(1))){
                     System.out.println("You are Logged in ");
                     firstWindow.changeWindow(secondWindow.getMainPanel());
+                    User.setCurrentUser(client);
+                    secondWindow.setCurrentUser();
+
+                    System.out.println(User.getCurrentUser());
+
 
                 }else{
                     System.out.println("Wrong password!");

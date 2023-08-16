@@ -12,6 +12,8 @@ public class ClientsController {
                 "thommy@gmail.com","222","haslo2" ));
         clients.add(new Client("John", "Przybyl", "12-33-00",
                 "John@gmail.com","333","haslo3" ));
+        clients.add(new Client("test", "Przybyl", "12-33-00",
+                "test","333","test" ));
     }
     public List<Client> findAll(){
         for(Client client: clients){
