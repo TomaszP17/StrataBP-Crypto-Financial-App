@@ -19,6 +19,6 @@ public class RecoverPasswordButtonListener implements ActionListener {
         return panel;
     }
     /*public checkIfUserExists(){
-        //method checks text file where is user data base and
+        //method checks text file where is user database and
     }*/
 }

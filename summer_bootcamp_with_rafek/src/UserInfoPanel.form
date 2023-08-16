@@ -7,22 +7,46 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="97f71" class="javax.swing.JLabel" binding="upperLabel">
-        <constraints border-constraint="North"/>
-        <properties>
-          <text value="Label"/>
-        </properties>
-      </component>
       <component id="2bc86" class="javax.swing.JList" binding="list">
         <constraints border-constraint="Center"/>
-        <properties/>
+        <properties>
+          <model>
+            <item value="NAME: XXX"/>
+            <item value="LASTNAME: XXX"/>
+            <item value="PHONE: XXX"/>
+            <item value="EMAIL: XXX"/>
+            <item value="ETC..."/>
+          </model>
+        </properties>
       </component>
       <component id="a52b1" class="javax.swing.JLabel" binding="bottomLabel">
         <constraints border-constraint="South"/>
         <properties>
-          <text value="Label"/>
+          <horizontalAlignment value="0"/>
+          <text value="Yout data are in our safe data base!"/>
         </properties>
       </component>
+      <grid id="489d7" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="North"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="97f71" class="javax.swing.JLabel" binding="upperLabel">
+            <constraints border-constraint="Center"/>
+            <properties>
+              <font name="JetBrains Mono" size="20" style="1"/>
+              <horizontalAlignment value="0"/>
+              <text value="USER: [NICKNAME]  "/>
+            </properties>
+          </component>
+          <component id="9e69" class="javax.swing.JButton" binding="backButton" default-binding="true">
+            <constraints border-constraint="East"/>
+            <properties>
+              <text value="Back"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
     </children>
   </grid>
 </form>

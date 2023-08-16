@@ -47,10 +47,4 @@ public class ClientsController {
 
         return findByEmail(user.getEmail());
     }
-
-
-
-
-
-
 }

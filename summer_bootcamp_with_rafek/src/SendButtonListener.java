@@ -13,7 +13,6 @@ public class SendButtonListener implements ActionListener {
             //logika przelewu gdy uzytkownik kliknie OK
         }
     }
-
     public JPanel createSendPanel(){
         JPanel panel = new JPanel(new GridLayout(6, 2, 10, 10));
         JLabel label = new JLabel("Currency: ");
