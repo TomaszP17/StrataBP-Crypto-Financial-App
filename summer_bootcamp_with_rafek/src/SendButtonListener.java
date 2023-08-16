@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SendButtonListener implements ActionListener {
 
@@ -14,6 +16,7 @@ public class SendButtonListener implements ActionListener {
             // client2 = ClientsController.findByEmail();
 
            // ClientsController.sendFromTo(client1, client2);
+
         }
     }
     public JPanel createSendPanel(){
@@ -36,5 +39,25 @@ public class SendButtonListener implements ActionListener {
         panel.add(emailTextField);
 
         return panel;
+    }
+
+    /**
+     * It gets data (String) from fields, in order: currency, amount, email
+     */
+    public List<String> getStringFromFields(JPanel panel){
+        Component[] components = panel.getComponents();
+        List<String> array = new ArrayList<>();
+        for(Component x : components){
+            if(x instanceof JTextField){
+                String rowData = ((JTextField) x).getText();
+                array.add(rowData);
+            } else if (x instanceof JComboBox<?>) {
+                JComboBox<Cryptocurrency> comboBox = (JComboBox<Cryptocurrency>) x;
+                String data = ((JComboBox<?>) x).getSelectedItem().toString();
+                array.add(data);
+            }
+        }
+        System.out.println(array);
+        return array;
     }
 }

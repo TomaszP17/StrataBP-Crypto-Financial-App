@@ -23,24 +23,11 @@ public class SecondWindow {
         this.firstWindow = firstWindow;
         limitsButton.addActionListener(new LimitButtonListener());
         sendButton.addActionListener(new SendButtonListener());
-        System.out.println("sadasdas");
         logOutButton.addActionListener(new LogOutButtonListener(firstWindow));
         List<String> array = new ArrayList<>();
 
-
-        array.add(Cryptocurrency.BTC.toString() + "14" );
-        array.add("ETH" + "2" );
-
         centerList.setListData(array.toArray());
-
-
-
         };
-
-
-
-
-
     public JPanel getMainPanel(){
         return panel1;
     }
@@ -53,11 +40,9 @@ public class SecondWindow {
 
         List<String> array = new ArrayList<>();
 
-
         array.add(Cryptocurrency.BTC.toString() + " -> " + client.wallet.get("BTC").toString());
         array.add(Cryptocurrency.ETH.toString() + " -> " + client.wallet.get("ETH").toString());
         array.add(Cryptocurrency.ADA.toString() + " -> " + client.wallet.get("ADA").toString());
-
 
         centerList.setListData(array.toArray());
 

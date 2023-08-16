@@ -31,11 +31,11 @@ public class ClientsController {
         System.out.println(pesel);
         System.out.println(password);
 
-    public static void sendFromTo(Client client1, Client client2,String keyOfCrypto, double ammount){
+    /*public static void sendFromTo(Client client1, Client client2,String keyOfCrypto, double ammount){
         client1.deleteCrypto(keyOfCrypto, ammount);
         client2.addCrypto(keyOfCrypto, ammount);
 
-    }
+    }*/
 
 
         clients.add(client);
