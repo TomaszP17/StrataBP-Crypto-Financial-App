@@ -20,7 +20,7 @@ public class FirstWindow extends JFrame{
 
         //SecondWindow secondWindow = new SecondWindow();
 
-        logInButton.addActionListener(new LogInButtonListener(this, new SecondWindow()));
+        logInButton.addActionListener(new LogInButtonListener(this, new SecondWindow(this)));
         signUpButton.addActionListener(new SignUpListener());
         recoverPassword.addActionListener(new RecoverPasswordButtonListener());
     }
