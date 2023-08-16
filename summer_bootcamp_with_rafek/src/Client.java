@@ -19,10 +19,28 @@ public class Client extends User {
         wallet.put("ADA", 10.0);
 
     }
-    public void addCrypto(String keyOfCrypto, double ammount){
-        double sum = ammount + wallet.get(keyOfCrypto);
-        wallet.put(keyOfCrypto, sum);
+
+    /**
+     * Adding Crypto to user wallet
+     *
+     */
+
+
+    /**
+     * Adding Crypto to use wallet
+     * @param keyCrypto e.x BTC, ADA, ETH
+     * @param amount
+     */
+    public void addCrypto(String keyCrypto, double amount){
+        double sum = amount + wallet.get(keyCrypto);
+        wallet.put(keyCrypto, sum);
     }
+
+    /**
+     * Deleting Crypto from user
+     * @param keyOfCrypto
+     * @param ammount
+     */
     public void deleteCrypto(String keyOfCrypto, double ammount){
         double sum = wallet.get(keyOfCrypto)-ammount;
         wallet.put(keyOfCrypto, sum);

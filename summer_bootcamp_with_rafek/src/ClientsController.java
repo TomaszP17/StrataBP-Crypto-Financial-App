@@ -16,13 +16,24 @@ public class ClientsController {
                 "test","333","test" ));
     }
 
-    public static void sendFromTo(String email, String email1, String keyCrypto, double v) {
+    /**
+     * Sending crypto to others users
+     * @param email - email of user who is sending
+     * @param email1 - email of user who is receiving
+     * @param keyCrypto - e.x BTC, ADA, ETH
+     * @param amount - amount of cryptos
+     */
+    public static void sendFromTo(String email, String email1, String keyCrypto, double amount) {
         Client client1 = ClientsController.findByEmail(email);
         Client client2 = ClientsController.findByEmail(email1);
-        client1.deleteCrypto(keyCrypto, v);
-        client2.addCrypto(keyCrypto, v);
+        client1.deleteCrypto(keyCrypto, amount);
+        client2.addCrypto(keyCrypto, amount);
     }
 
+    /**
+     * Finding all users
+      * @return
+     */
     public List<Client> findAll(){
         for(Client client: clients){
             System.out.println(client.toString());
@@ -30,6 +41,16 @@ public class ClientsController {
         return clients;
     }
 
+    /**
+     * Creating client
+     * @param name
+     * @param lastname
+     * @param dateOfBirth
+     * @param email
+     * @param pesel
+     * @param password
+     * @return
+     */
     public Client clientCreate(String name, String lastname, String dateOfBirth, String email, String pesel, String password){
         Client client = new Client(name, lastname, dateOfBirth, email, pesel, password);
         System.out.println(name);
@@ -45,6 +66,12 @@ public class ClientsController {
         clients.add(client);
         return client;
     }
+
+    /**
+     * Finding user by email
+     * @param email
+     * @return
+     */
     public static Client findByEmail(String email){
         for(Client client : clients){
             if(client.getEmail().equals(email)){
@@ -53,6 +80,12 @@ public class ClientsController {
         }
         return null;
     }
+
+    /**
+     * Finding user by client
+     * @param user
+     * @return
+     */
     public static Client findClientByUser(User user){
 
         return findByEmail(user.getEmail());
