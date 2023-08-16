@@ -1,25 +1,24 @@
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Client extends User {
+    Map<String, Double> wallet = new HashMap<>();
 
+    @Override
+    public String toString() {
+        return "Client{" +
+                "wallet=" + wallet +
+                '}';
+    }
 
-
-    private double accountBalance;
-    public Client( String name, String lastname, String dateOfBirth, String email,String pesel, String password) {
+    public Client(String name, String lastname, String dateOfBirth, String email, String pesel, String password) {
         super(name, lastname, dateOfBirth, email, pesel, password);
-        this.accountBalance = 0;
+        wallet.put("BTC", 10.0);
+        wallet.put("ETH", 10.0);
+        wallet.put("ADA", 10.0);
 
     }
-
-    public double getAccountBalance() {
-        return accountBalance;
-    }
-
-    public void setAccountBalance(double accountBalance) {
-        this.accountBalance = accountBalance;
-    }
-
-
 
 
 }

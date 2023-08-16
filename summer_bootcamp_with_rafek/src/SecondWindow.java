@@ -1,4 +1,7 @@
 import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SecondWindow {
     private JPanel panel1;
@@ -16,11 +19,22 @@ public class SecondWindow {
     private final FirstWindow firstWindow;
 
     public SecondWindow(FirstWindow firstWindow) {
+
         this.firstWindow = firstWindow;
         limitsButton.addActionListener(new LimitButtonListener());
         sendButton.addActionListener(new SendButtonListener());
         System.out.println("sadasdas");
         logOutButton.addActionListener(new LogOutButtonListener(firstWindow));
+        List<String> array = new ArrayList<>();
+
+
+        array.add(Cryptocurrency.BTC.toString() + "14" );
+        array.add("ETH" + "2" );
+
+        centerList.setListData(array.toArray());
+
+
+
         };
 
 
@@ -35,4 +49,19 @@ public class SecondWindow {
             userNameLabel.setText(User.getCurrentUser().getName());
 
     }
+    public void showClientWallet(Client client){
+
+        List<String> array = new ArrayList<>();
+
+
+        array.add(Cryptocurrency.BTC.toString() + " -> " + client.wallet.get("BTC").toString());
+        array.add(Cryptocurrency.ETH.toString() + " -> " + client.wallet.get("ETH").toString());
+        array.add(Cryptocurrency.ADA.toString() + " -> " + client.wallet.get("ADA").toString());
+
+
+        centerList.setListData(array.toArray());
+
+
+    }
+
 }

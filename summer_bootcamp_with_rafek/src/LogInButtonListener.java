@@ -37,7 +37,7 @@ public class LogInButtonListener implements ActionListener {
                     firstWindow.changeWindow(secondWindow.getMainPanel());
                     User.setCurrentUser(client);
                     secondWindow.setCurrentUser();
-
+                    secondWindow.showClientWallet(client);
                     System.out.println(User.getCurrentUser());
 
 

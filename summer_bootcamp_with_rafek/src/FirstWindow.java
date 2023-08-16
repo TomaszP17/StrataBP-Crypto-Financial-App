@@ -27,6 +27,7 @@ public class FirstWindow extends JFrame{
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(FirstWindow::new);
+
     }
     public void changeWindow(JPanel panel){
         setContentPane(panel);
