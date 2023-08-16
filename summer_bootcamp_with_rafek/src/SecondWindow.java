@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,13 +16,14 @@ public class SecondWindow {
     private JButton logOutButton;
     private JLabel userNameLabel;
     private final FirstWindow firstWindow;
-
-    public SecondWindow(FirstWindow firstWindow) {
-
+    private final UserInfoPanel userInfoPanel;
+    public SecondWindow(FirstWindow firstWindow, UserInfoPanel userInfoPanel) {
         this.firstWindow = firstWindow;
+        this.userInfoPanel = userInfoPanel;
         limitsButton.addActionListener(new LimitButtonListener());
         sendButton.addActionListener(new SendButtonListener());
         logOutButton.addActionListener(new LogOutButtonListener(firstWindow));
+        userPanelButton.addActionListener(new UserPanelButtonListener(firstWindow, userInfoPanel));
         List<String> array = new ArrayList<>();
 
         centerList.setListData(array.toArray());
@@ -48,5 +48,6 @@ public class SecondWindow {
 
 
     }
+
 
 }

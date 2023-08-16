@@ -19,8 +19,8 @@ public class SendButtonListener implements ActionListener {
             Client client2 = ClientsController.findByEmail(arrayWithParameters.get(2).toString());
             getStringFromFields(panel);
             String keyCrypto = arrayWithParameters.get(0).toString();
-            double ammount = Double.parseDouble(arrayWithParameters.get(1).toString());
-            ClientsController.sendFromTo(client1.getEmail(), client2.getEmail(), arrayWithParameters.get(0).toString(), ammount);
+            double amount = Double.parseDouble(arrayWithParameters.get(1).toString());
+            ClientsController.sendFromTo(client1.getEmail(), client2.getEmail(), arrayWithParameters.get(0).toString(), amount);
 
         }
     }

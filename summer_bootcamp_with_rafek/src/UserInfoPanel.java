@@ -5,4 +5,17 @@ public class UserInfoPanel {
     private JLabel upperLabel;
     private JLabel bottomLabel;
     private JButton backButton;
+    private JPanel mainPanel;
+    private JPanel upperPanel;
+
+    public UserInfoPanel() {
+
+    }
+
+    /**
+     * Method returns main Panel
+     */
+    public JPanel getMainPanel(){
+        return mainPanel;
+    }
 }
