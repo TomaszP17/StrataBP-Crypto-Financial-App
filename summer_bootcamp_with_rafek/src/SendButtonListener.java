@@ -10,7 +10,10 @@ public class SendButtonListener implements ActionListener {
         JPanel panel = createSendPanel();
         int result = JOptionPane.showConfirmDialog(null, panel, "Send Money", JOptionPane.OK_CANCEL_OPTION);
         if(result == JOptionPane.OK_OPTION){
-            //logika przelewu gdy uzytkownik kliknie OK
+            Client client1 = ClientsController.findClientByUser(User.getCurrentUser());
+            // client2 = ClientsController.findByEmail();
+
+           // ClientsController.sendFromTo(client1, client2);
         }
     }
     public JPanel createSendPanel(){
