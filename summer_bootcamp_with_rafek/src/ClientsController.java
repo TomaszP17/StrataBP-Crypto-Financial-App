@@ -29,6 +29,7 @@ public class ClientsController {
         client1.deleteCrypto(keyCrypto, amount);
         client2.addCrypto(keyCrypto, amount);
     }
+    //need method which donateMoneyToAccount without deleting method
 
     /**
      * Finding all users

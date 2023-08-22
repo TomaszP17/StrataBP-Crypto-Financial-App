@@ -26,6 +26,9 @@ public class SecondWindow {
         sendButton.addActionListener(new SendButtonListener());
         logOutButton.addActionListener(new LogOutButtonListener(firstWindow));
         userPanelButton.addActionListener(new UserPanelButtonListener(firstWindow, userInfoPanel));
+        donateButton.addActionListener(new DonateButtonListener());
+
+
         List<String> array = new ArrayList<>();
 
         centerList.setListData(array.toArray());
