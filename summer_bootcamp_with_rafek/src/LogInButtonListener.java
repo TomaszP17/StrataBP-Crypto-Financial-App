@@ -7,11 +7,9 @@ import java.util.List;
 
 public class LogInButtonListener implements ActionListener {
     private final FirstWindow firstWindow;
-    private final SecondWindow secondWindow;
 
-    public LogInButtonListener(FirstWindow firstWindow, SecondWindow secondWindow) {
+    public LogInButtonListener(FirstWindow firstWindow) {
         this.firstWindow = firstWindow;
-        this.secondWindow = secondWindow;
     }
 
     @Override
@@ -21,33 +19,35 @@ public class LogInButtonListener implements ActionListener {
 
         int result = JOptionPane.showConfirmDialog(null, panel, "LogIn option", JOptionPane.OK_CANCEL_OPTION);
         List<String> arrayWithParameters;
-        if(result == JOptionPane.OK_OPTION){
+        if (result == JOptionPane.OK_OPTION) {
 
             System.out.println("Clicked OK!");
-            //check if fields are good filled and
             arrayWithParameters = getStringFromFields(panel);
             System.out.println(arrayWithParameters);
-            if(arrayWithParameters.get(0).equals("admin") && arrayWithParameters.get(1).equals("admin")){
+            if (arrayWithParameters.get(0).equals("admin") && arrayWithParameters.get(1).equals("admin")) {
+                SecondWindow secondWindow = new SecondWindow(firstWindow);
                 firstWindow.changeWindow(secondWindow.getMainPanel());
             }
             Client client = clients.findByEmail(arrayWithParameters.get(0));
-            if(client!=null){
-                if(client.getPassword().equals(arrayWithParameters.get(1))){
+            if (client != null) {
+                if (client.getPassword().equals(arrayWithParameters.get(1))) {
                     System.out.println("You are Logged in ");
+                    SecondWindow secondWindow = new SecondWindow(firstWindow);
                     firstWindow.changeWindow(secondWindow.getMainPanel());
                     User.setCurrentUser(client);
                     secondWindow.setCurrentUser();
                     secondWindow.showClientWallet(client);
                     System.out.println(User.getCurrentUser());
-                }else{
+                } else {
                     System.out.println("Wrong password!");
                 }
             }
-        }else{
+        } else {
             System.out.println("Clicked CANCEL!");
         }
     }
-    public JPanel createLogInPanel(){
+
+    public JPanel createLogInPanel() {
         JPanel panel = new JPanel();
         JLabel loginLabel = new JLabel("Login: ");
         JTextField textField = new JTextField(20);
@@ -62,12 +62,11 @@ public class LogInButtonListener implements ActionListener {
         return panel;
     }
 
-
-    public List<String> getStringFromFields(JPanel panel){
+    public List<String> getStringFromFields(JPanel panel) {
         Component[] components = panel.getComponents();
         List<String> array = new ArrayList<>();
-        for(Component x : components){
-            if(x instanceof JTextField){
+        for (Component x : components) {
+            if (x instanceof JTextField) {
                 String rowData = ((JTextField) x).getText();
                 array.add(rowData);
             }
@@ -75,7 +74,4 @@ public class LogInButtonListener implements ActionListener {
 
         return array;
     }
-
-
-
 }

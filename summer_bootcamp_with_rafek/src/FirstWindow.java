@@ -18,7 +18,7 @@ public class FirstWindow extends JFrame{
 
         setVisible(true);
 
-        logInButton.addActionListener(new LogInButtonListener(this, new SecondWindow(this, new UserInfoPanel())));
+        logInButton.addActionListener(new LogInButtonListener(this));
         signUpButton.addActionListener(new SignUpListener());
         recoverPassword.addActionListener(new RecoverPasswordButtonListener());
     }

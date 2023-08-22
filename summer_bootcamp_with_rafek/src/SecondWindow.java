@@ -16,10 +16,12 @@ public class SecondWindow {
     private JButton logOutButton;
     private JLabel userNameLabel;
     private final FirstWindow firstWindow;
-    private final UserInfoPanel userInfoPanel;
-    public SecondWindow(FirstWindow firstWindow, UserInfoPanel userInfoPanel) {
+    private UserInfoPanel userInfoPanel; //
+    public SecondWindow(FirstWindow firstWindow) {
         this.firstWindow = firstWindow;
-        this.userInfoPanel = userInfoPanel;
+        userInfoPanel = new UserInfoPanel(firstWindow, this); //
+
+        //this.userInfoPanel = new UserInfoPanel(firstWindow); // Przekazywanie referencji do FirstWindow
         limitsButton.addActionListener(new LimitButtonListener());
         sendButton.addActionListener(new SendButtonListener());
         logOutButton.addActionListener(new LogOutButtonListener(firstWindow));
@@ -27,7 +29,7 @@ public class SecondWindow {
         List<String> array = new ArrayList<>();
 
         centerList.setListData(array.toArray());
-        };
+    }
     public JPanel getMainPanel(){
         return panel1;
     }

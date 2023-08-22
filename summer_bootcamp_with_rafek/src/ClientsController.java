@@ -60,9 +60,6 @@ public class ClientsController {
         System.out.println(pesel);
         System.out.println(password);
 
-
-
-
         clients.add(client);
         return client;
     }

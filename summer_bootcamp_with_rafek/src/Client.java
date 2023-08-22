@@ -21,12 +21,6 @@ public class Client extends User {
     }
 
     /**
-     * Adding Crypto to user wallet
-     *
-     */
-
-
-    /**
      * Adding Crypto to use wallet
      * @param keyCrypto e.x BTC, ADA, ETH
      * @param amount
@@ -45,6 +39,4 @@ public class Client extends User {
         double sum = wallet.get(keyOfCrypto)-ammount;
         wallet.put(keyOfCrypto, sum);
     }
-
-
 }
