@@ -7,7 +7,7 @@ import java.util.List;
 
 public class SendButtonListener implements ActionListener {
 
-    private final Client client1 = ClientsController.findClientByUser(User.getCurrentUser());
+    //private final Client client1 = ClientsController.findClientByUser(User.getCurrentUser());
     @Override
     public void actionPerformed(ActionEvent e) {
         JPanel panel = createSendPanel();
@@ -17,7 +17,9 @@ public class SendButtonListener implements ActionListener {
 
             arrayWithParameters = getStringFromFields(panel);
             //Client client1 = ClientsController.findClientByUser(User.getCurrentUser());
+            Client client1 = ClientsController.findClientByUser(User.getCurrentUser());
             Client client2 = ClientsController.findByEmail(arrayWithParameters.get(2));
+
             if(isDataCorrect(arrayWithParameters)){
                 if(!isReceiverDifferent(client1, client2)){
                     System.out.println("You try to send yourself money");
