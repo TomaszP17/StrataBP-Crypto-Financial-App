@@ -16,17 +16,16 @@ public class SecondWindow {
     private JButton logOutButton;
     private JLabel userNameLabel;
     private final FirstWindow firstWindow;
-    private UserInfoPanel userInfoPanel; //
+    private UserInfoPanel userInfoPanel;
     public SecondWindow(FirstWindow firstWindow) {
         this.firstWindow = firstWindow;
         userInfoPanel = new UserInfoPanel(firstWindow, this); //
 
-        //this.userInfoPanel = new UserInfoPanel(firstWindow); // Przekazywanie referencji do FirstWindow
         limitsButton.addActionListener(new LimitButtonListener());
         sendButton.addActionListener(new SendButtonListener());
         logOutButton.addActionListener(new LogOutButtonListener(firstWindow));
         userPanelButton.addActionListener(new UserPanelButtonListener(firstWindow, userInfoPanel));
-        donateButton.addActionListener(new DonateButtonListener());
+        donateButton.addActionListener(new DonateButtonListener(this));
 
 
         List<String> array = new ArrayList<>();
@@ -36,11 +35,20 @@ public class SecondWindow {
     public JPanel getMainPanel(){
         return panel1;
     }
+
+    /**
+     * todo ?
+     */
     public void setCurrentUser(){
 
             userNameLabel.setText(User.getCurrentUser().getName());
 
     }
+
+    /**
+     * TODO ?
+     * @param client
+     */
     public void showClientWallet(Client client){
 
         List<String> array = new ArrayList<>();
@@ -54,5 +62,12 @@ public class SecondWindow {
 
     }
 
+    /**
+     * TODO ?
+     * @param client
+     */
+    public void updateClientWalletView(Client client){
+        showClientWallet(client);
+    }
 
 }

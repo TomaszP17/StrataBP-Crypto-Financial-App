@@ -27,12 +27,22 @@ public class FirstWindow extends JFrame{
         SwingUtilities.invokeLater(FirstWindow::new);
 
     }
+
+    /**
+     * Change panel to other
+     * @param panel - e.x SecondWindow mainPanel or other Window panel
+     */
     public void changeWindow(JPanel panel){
         setContentPane(panel);
         revalidate();
         repaint();
         pack();
     }
+
+    /**
+     * Return mainPanel
+     * @return - mainPanel
+     */
     public JPanel getMainPanel(){
         return panel1;
     }

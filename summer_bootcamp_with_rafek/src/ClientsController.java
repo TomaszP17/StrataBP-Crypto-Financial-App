@@ -32,6 +32,16 @@ public class ClientsController {
     //need method which donateMoneyToAccount without deleting method
 
     /**
+     * Donating crypto to client account
+     * @param email - email of user
+     * @param keyCrypto - e.x BTC, ETH, ADA
+     * @param amount - amount of cryptos
+     */
+    public static void donateMoney(String email, String keyCrypto, double amount){
+        Client client = ClientsController.findByEmail(email);
+        client.addCrypto(keyCrypto, amount);
+    }
+    /**
      * Finding all users
       * @return
      */
