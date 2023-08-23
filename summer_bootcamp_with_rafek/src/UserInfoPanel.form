@@ -36,7 +36,7 @@
             <properties>
               <font name="JetBrains Mono" size="20" style="1"/>
               <horizontalAlignment value="0"/>
-              <text value="USER: [NICKNAME]  "/>
+              <text value="xxx"/>
             </properties>
           </component>
           <component id="9e69" class="javax.swing.JButton" binding="backButton" default-binding="true">
