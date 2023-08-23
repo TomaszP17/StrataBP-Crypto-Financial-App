@@ -27,7 +27,6 @@ public class SecondWindow {
         userPanelButton.addActionListener(new UserPanelButtonListener(firstWindow, userInfoPanel));
         donateButton.addActionListener(new DonateButtonListener(this));
 
-
         List<String> array = new ArrayList<>();
 
         centerList.setListData(array.toArray());
@@ -40,9 +39,7 @@ public class SecondWindow {
      * todo ?
      */
     public void setCurrentUser(){
-
             userNameLabel.setText(User.getCurrentUser().getName());
-
     }
 
     /**

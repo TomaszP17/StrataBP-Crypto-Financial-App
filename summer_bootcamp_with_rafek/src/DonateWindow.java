@@ -114,6 +114,7 @@ public class DonateWindow extends JDialog {
         comboBox.addItem(Cryptocurrency.BTC);
         comboBox.addItem(Cryptocurrency.ETH);
         comboBox.addItem(Cryptocurrency.ADA);
+        comboBox.addItem(Cryptocurrency.USDT);
     }
 
     /**

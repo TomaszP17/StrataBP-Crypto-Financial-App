@@ -19,8 +19,6 @@ public class LimitButtonListener implements ActionListener, PanelListener {
         }
     }
 
-
-
     public JPanel createLimitsPanel(){
         JPanel panel = new JPanel(new GridLayout(6, 1, 10, 10));
 
@@ -90,7 +88,7 @@ public class LimitButtonListener implements ActionListener, PanelListener {
      * @param panel
      */
     private void onCancel(JPanel panel) {
-
+        System.out.println("Clicked CANCEL");
     }
     public boolean isDataCorrect(List<String> array){
 

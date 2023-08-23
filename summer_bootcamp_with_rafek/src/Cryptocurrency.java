@@ -1,7 +1,8 @@
 public enum Cryptocurrency {
     BTC("Bitcoin"),
     ETH("Ethereum"),
-    ADA("Cardano");
+    ADA("Cardano"),
+    USDT("Tether USD");
     private final String name;
     Cryptocurrency(String name) {
         this.name = name;
