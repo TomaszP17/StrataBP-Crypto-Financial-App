@@ -27,6 +27,8 @@ public class Client extends User {
         wallet.put("BTC", 10.0);
         wallet.put("ETH", 10.0);
         wallet.put("ADA", 10.0);
+        wallet.put("Tether USD", 0.0);
+
     }
 
     /**
