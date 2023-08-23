@@ -26,7 +26,7 @@ public class SecondWindow {
         logOutButton.addActionListener(new LogOutButtonListener(firstWindow));
         userPanelButton.addActionListener(new UserPanelButtonListener(firstWindow, userInfoPanel));
         donateButton.addActionListener(new DonateButtonListener(this));
-
+        historyButton.addActionListener(new HistoryButtonListener(this));
         List<String> array = new ArrayList<>();
 
         centerList.setListData(array.toArray());
@@ -55,8 +55,6 @@ public class SecondWindow {
         array.add(Cryptocurrency.ADA.toString() + " -> " + client.getWallet().get("ADA").toString());
 
         centerList.setListData(array.toArray());
-
-
     }
 
     /**
@@ -67,4 +65,13 @@ public class SecondWindow {
         showClientWallet(client);
     }
 
+    public void changeMainPanelToHistoryPanel(JPanel panel){
+        firstWindow.changeWindow(panel);
+        firstWindow.revalidate();
+        firstWindow.repaint();
+        firstWindow.pack();
+    }
+    public void changeMainPanelToSecondPanel(){
+        firstWindow.changeWindow(panel1);
+    }
 }

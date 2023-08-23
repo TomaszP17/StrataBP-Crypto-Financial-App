@@ -15,12 +15,12 @@
           <text value="TRANSACTION HISTORY"/>
         </properties>
       </component>
-      <grid id="eca8e" layout-manager="BorderLayout" hgap="0" vgap="0">
+      <grid id="eca8e" binding="centerPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
         <constraints border-constraint="Center"/>
         <properties/>
         <border type="none"/>
         <children>
-          <grid id="42e97" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+          <grid id="42e97" binding="buttonsPanel" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
             <constraints border-constraint="North"/>
             <properties/>
             <border type="none"/>
