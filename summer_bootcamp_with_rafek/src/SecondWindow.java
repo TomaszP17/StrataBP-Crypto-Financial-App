@@ -50,9 +50,9 @@ public class SecondWindow {
 
         List<String> array = new ArrayList<>();
 
-        array.add(Cryptocurrency.BTC.toString() + " -> " + client.wallet.get("BTC").toString());
-        array.add(Cryptocurrency.ETH.toString() + " -> " + client.wallet.get("ETH").toString());
-        array.add(Cryptocurrency.ADA.toString() + " -> " + client.wallet.get("ADA").toString());
+        array.add(Cryptocurrency.BTC.toString() + " -> " + client.getWallet().get("BTC").toString());
+        array.add(Cryptocurrency.ETH.toString() + " -> " + client.getWallet().get("ETH").toString());
+        array.add(Cryptocurrency.ADA.toString() + " -> " + client.getWallet().get("ADA").toString());
 
         centerList.setListData(array.toArray());
 

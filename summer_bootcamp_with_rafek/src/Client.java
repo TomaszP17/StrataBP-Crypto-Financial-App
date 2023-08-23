@@ -3,7 +3,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Client extends User {
-    Map<String, Double> wallet = new HashMap<>();
+
+
+    private Map<String, Double> wallet = new HashMap<>();
+
+    public Map<String, Double> getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(Map<String, Double> wallet) {
+        this.wallet = wallet;
+    }
 
     @Override
     public String toString() {

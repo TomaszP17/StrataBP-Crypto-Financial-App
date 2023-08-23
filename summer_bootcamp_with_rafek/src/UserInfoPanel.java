@@ -29,9 +29,9 @@ public class UserInfoPanel {
         upperLabel.setText("Welcome, " + currentClient.getName() + "!");
     }
     public void fillListModel() {
-        listModel.addElement("BTC: " + currentClient.wallet.get("BTC"));
-        listModel.addElement("ETH: " + currentClient.wallet.get("ETH"));
-        listModel.addElement("ADA: " + currentClient.wallet.get("ADA"));
+        listModel.addElement("BTC: " + currentClient.getWallet().get("BTC"));
+        listModel.addElement("ETH: " + currentClient.getWallet().get("ETH"));
+        listModel.addElement("ADA: " + currentClient.getWallet().get("ADA"));
 
         list.setModel(listModel);
     }
