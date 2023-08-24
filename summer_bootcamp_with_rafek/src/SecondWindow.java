@@ -19,12 +19,12 @@ public class SecondWindow {
     private UserInfoPanel userInfoPanel;
     public SecondWindow(FirstWindow firstWindow) {
         this.firstWindow = firstWindow;
-        userInfoPanel = new UserInfoPanel(firstWindow, this); //
+        //userInfoPanel = new UserInfoPanel(this); //
 
         limitsButton.addActionListener(new LimitButtonListener());
         sendButton.addActionListener(new SendButtonListener());
         logOutButton.addActionListener(new LogOutButtonListener(firstWindow));
-        userPanelButton.addActionListener(new UserPanelButtonListener(firstWindow, userInfoPanel));
+        userPanelButton.addActionListener(new UserPanelButtonListener(this));
         donateButton.addActionListener(new DonateButtonListener(this));
         historyButton.addActionListener(new HistoryButtonListener(this));
         List<String> array = new ArrayList<>();
@@ -73,5 +73,11 @@ public class SecondWindow {
     }
     public void changeMainPanelToSecondPanel(){
         firstWindow.changeWindow(panel1);
+    }
+    public void changeMainPanelToUserInfoPanel(JPanel panel){
+        firstWindow.changeWindow(panel);
+        firstWindow.revalidate();
+        firstWindow.repaint();
+        firstWindow.pack();
     }
 }

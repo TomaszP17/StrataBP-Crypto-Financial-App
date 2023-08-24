@@ -7,18 +7,16 @@ public class UserInfoPanel {
     private JButton backButton;
     private JPanel mainPanel;
     private JPanel upperPanel;
-    private FirstWindow firstWindow;
     private SecondWindow secondWindow; //
     private DefaultListModel<String> listModel = new DefaultListModel<>();
     private Client currentClient;
 
-    public UserInfoPanel(FirstWindow firstWindow, SecondWindow secondWindow) {
-        this.firstWindow = firstWindow;
+    public UserInfoPanel( SecondWindow secondWindow) {
         this.secondWindow = secondWindow; // Przechowywanie referencji do SecondWindow
-        backButton.addActionListener(new BackButtonListener(firstWindow, secondWindow));
+        backButton.addActionListener(new BackButtonListener(secondWindow));
 
         User currentUser = User.getCurrentUser();
-
+        System.out.println("curr" + currentUser);
         if (currentUser instanceof Client) {
             currentClient = (Client) currentUser;
             setNicknameLabel();
