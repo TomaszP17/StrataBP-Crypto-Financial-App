@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -6,7 +7,7 @@ public class SecondWindow {
     private JPanel panel1;
     private JLabel upperLabel;
     private JList centerList;
-    private JButton cou;
+    private JButton marketButton;
     private JButton sendButton;
     private JButton historyButton;
     private JButton userPanelButton;
@@ -27,6 +28,7 @@ public class SecondWindow {
         userPanelButton.addActionListener(new UserPanelButtonListener(this));
         donateButton.addActionListener(new DonateButtonListener(this));
         historyButton.addActionListener(new HistoryButtonListener(this));
+        marketButton.addActionListener(new MarketButtonListener(this));
         List<String> array = new ArrayList<>();
 
         centerList.setListData(array.toArray());

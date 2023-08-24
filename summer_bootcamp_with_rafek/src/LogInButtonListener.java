@@ -49,7 +49,7 @@ public class LogInButtonListener implements ActionListener {
 
     public JPanel createLogInPanel() {
         JPanel panel = new JPanel();
-        JLabel loginLabel = new JLabel("Login: ");
+        JLabel loginLabel = new JLabel("Email: ");
         JTextField textField = new JTextField(20);
         JLabel passwordLabel = new JLabel("Password: ");
         JPasswordField passwordField = new JPasswordField(20);
