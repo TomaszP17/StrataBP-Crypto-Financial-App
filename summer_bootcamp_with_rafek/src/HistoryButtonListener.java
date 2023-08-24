@@ -2,7 +2,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class HistoryButtonListener implements ActionListener {
-    private SecondWindow secondWindow;
+    private final SecondWindow secondWindow;
 
     public HistoryButtonListener(SecondWindow secondWindow) {
         this.secondWindow = secondWindow;
@@ -10,7 +10,6 @@ public class HistoryButtonListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        HistoryWindow historyWindow = new HistoryWindow(secondWindow);
-        secondWindow.changeMainPanelToHistoryPanel(historyWindow.returnMainPanel());
+        secondWindow.showHistoryWindow(); // Wywołaj metodę showHistoryWindow z SecondWindow
     }
 }
