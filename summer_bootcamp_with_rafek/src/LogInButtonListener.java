@@ -23,11 +23,7 @@ public class LogInButtonListener implements ActionListener {
 
             System.out.println("Clicked OK!");
             arrayWithParameters = getStringFromFields(panel);
-            System.out.println(arrayWithParameters);
-            if (arrayWithParameters.get(0).equals("admin") && arrayWithParameters.get(1).equals("admin")) {
-                SecondWindow secondWindow = new SecondWindow(firstWindow);
-                firstWindow.changeWindow(secondWindow.getMainPanel());
-            }
+            setAdminPanel(arrayWithParameters);
             Client client = clients.findByEmail(arrayWithParameters.get(0));
             if (client != null) {
                 if (client.getPassword().equals(arrayWithParameters.get(1))) {
@@ -49,7 +45,7 @@ public class LogInButtonListener implements ActionListener {
 
     public JPanel createLogInPanel() {
         JPanel panel = new JPanel();
-        JLabel loginLabel = new JLabel("Login: ");
+        JLabel loginLabel = new JLabel("Email: ");
         JTextField textField = new JTextField(20);
         JLabel passwordLabel = new JLabel("Password: ");
         JPasswordField passwordField = new JPasswordField(20);
@@ -73,5 +69,17 @@ public class LogInButtonListener implements ActionListener {
         }
 
         return array;
+    }
+
+    public void setAdminPanel(List<String> array){
+
+        AdminPanel adminPanel = new AdminPanel(firstWindow);
+
+        if (array.get(0).equals("admin") && array.get(1).equals("admin")) {
+            SecondWindow secondWindow = new SecondWindow(firstWindow);
+            /*firstWindow.setSize(new Dimension(1000, 1000));
+            firstWindow.pack();*/
+            firstWindow.changeWindow(adminPanel.getMainPanel());
+        }
     }
 }

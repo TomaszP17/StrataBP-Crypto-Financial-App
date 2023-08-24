@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -6,7 +7,7 @@ public class SecondWindow {
     private JPanel panel1;
     private JLabel upperLabel;
     private JList centerList;
-    private JButton cou;
+    private JButton marketButton;
     private JButton sendButton;
     private JButton historyButton;
     private JButton userPanelButton;
@@ -19,14 +20,15 @@ public class SecondWindow {
     private UserInfoPanel userInfoPanel;
     public SecondWindow(FirstWindow firstWindow) {
         this.firstWindow = firstWindow;
-        userInfoPanel = new UserInfoPanel(firstWindow, this); //
+        //userInfoPanel = new UserInfoPanel(this); //
 
         limitsButton.addActionListener(new LimitButtonListener());
-        sendButton.addActionListener(new SendButtonListener());
+        sendButton.addActionListener(new SendButtonListener(this));
         logOutButton.addActionListener(new LogOutButtonListener(firstWindow));
-        userPanelButton.addActionListener(new UserPanelButtonListener(firstWindow, userInfoPanel));
+        userPanelButton.addActionListener(new UserPanelButtonListener(this));
         donateButton.addActionListener(new DonateButtonListener(this));
         historyButton.addActionListener(new HistoryButtonListener(this));
+        marketButton.addActionListener(new MarketButtonListener(this));
         List<String> array = new ArrayList<>();
 
         centerList.setListData(array.toArray());
@@ -50,10 +52,10 @@ public class SecondWindow {
 
         List<String> array = new ArrayList<>();
 
-        array.add(Cryptocurrency.BTC.toString() + " -> " + client.getWallet().get("BTC").toString() + " -> $" + CryptoPrices.getAllBtcUserInUSD(client));
-        array.add(Cryptocurrency.ETH.toString() + " -> " + client.getWallet().get("ETH").toString()+ " -> $"+ CryptoPrices.getAllEthUserInUSD(client) );
-        array.add(Cryptocurrency.ADA.toString() + " -> " + client.getWallet().get("ADA").toString()+ " -> $" + CryptoPrices.getAllAdaUserInUSD(client) );
-        array.add(Cryptocurrency.USDT.toString() + " -> " + client.getWallet().get("Tether USD").toString());
+        array.add(Cryptocurrency.BTC + " -> " + client.getWallet().get("BTC").toString() + " -> $" + CryptoPrices.getAllBtcUserInUSD(client));
+        array.add(Cryptocurrency.ETH + " -> " + client.getWallet().get("ETH").toString()+ " -> $"+ CryptoPrices.getAllEthUserInUSD(client) );
+        array.add(Cryptocurrency.ADA + " -> " + client.getWallet().get("ADA").toString()+ " -> $" + CryptoPrices.getAllAdaUserInUSD(client) );
+        array.add(Cryptocurrency.USDT + " -> " + client.getWallet().get("Tether USD").toString());
         centerList.setListData(array.toArray());
     }
 
@@ -73,5 +75,11 @@ public class SecondWindow {
     }
     public void changeMainPanelToSecondPanel(){
         firstWindow.changeWindow(panel1);
+    }
+    public void changeMainPanelToUserInfoPanel(JPanel panel){
+        firstWindow.changeWindow(panel);
+        firstWindow.revalidate();
+        firstWindow.repaint();
+        firstWindow.pack();
     }
 }

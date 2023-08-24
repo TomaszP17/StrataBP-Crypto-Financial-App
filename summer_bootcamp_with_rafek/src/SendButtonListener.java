@@ -4,8 +4,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class SendButtonListener implements ActionListener {
+    private final SecondWindow secondWindow;
+
+    public SendButtonListener(SecondWindow secondWindow) {
+        this.secondWindow = secondWindow;
+    }
 
     //private final Client client1 = ClientsController.findClientByUser(User.getCurrentUser());
     @Override
@@ -30,6 +36,7 @@ public class SendButtonListener implements ActionListener {
                     String keyCrypto = arrayWithParameters.get(0);
                     double amount = Double.parseDouble(arrayWithParameters.get(1));
                     ClientsController.sendFromTo(client1.getEmail(), client2.getEmail(), keyCrypto, amount);
+                    secondWindow.updateClientWalletView(client1);
                     JOptionPane.showMessageDialog(null, "Operation successful!");
                 }
             }else {
@@ -90,18 +97,34 @@ public class SendButtonListener implements ActionListener {
     public boolean isReceiverDifferent(Client receiver, Client sender){
         return !receiver.getPesel().equals(sender.getPesel());
     }
-    public boolean isDataCorrect(List<String> array){
+    public boolean isDataCorrect(List<String> array) {
         //we need to check if someone has crypto to send
+        String crypto = array.get(0);
         String amountToSend = array.get(1);
         String receiverEmail = array.get(2);
         //TODO need wallet to verify if user has money to send
+        Client currClient = ClientsController.findClientByUser(User.getCurrentUser());
+        Map<String, Double> clientWallet = currClient.getWallet();
 
-        //now we need to check if receiver exists
-        if(ClientsController.findByEmail(receiverEmail) == null){
-            System.out.println("Someone doesn't exists");
-            return false;
+        if (clientWallet.containsKey(crypto)) {
+            Double userAmountOnWallet = clientWallet.get(crypto);
+            Double amountToSendDouble = Double.parseDouble(amountToSend);
+            if (userAmountOnWallet < amountToSendDouble) {
+                System.out.println("Incorrect amount to send");
+                return false;
+            } else {
+                System.out.println("Good amount");
+                if (ClientsController.findByEmail(receiverEmail) == null) {
+                    System.out.println("Someone doesn't exists");
+                    return false;
+                } else {
+                    return true;
+                }
+            }
         }else{
-            return true;
+            System.out.println("Crypto not found!");
+            return  false;
         }
+
     }
 }

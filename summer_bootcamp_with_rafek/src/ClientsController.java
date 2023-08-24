@@ -11,7 +11,7 @@ public class ClientsController {
         clients.add(new Client("thommy", "Shelby", "12-33-00",
                 "thommy@gmail.com","222","haslo2" ));
         clients.add(new Client("John", "Przybyl", "12-33-00",
-                "John@gmail.com","333","haslo3" ));
+                "John@gmail.com","456","haslo3" ));
         clients.add(new Client("test", "Przybyl", "12-33-00",
                 "test","333","test" ));
     }
