@@ -22,7 +22,7 @@ public class SecondWindow {
         //userInfoPanel = new UserInfoPanel(this); //
 
         limitsButton.addActionListener(new LimitButtonListener());
-        sendButton.addActionListener(new SendButtonListener());
+        sendButton.addActionListener(new SendButtonListener(this));
         logOutButton.addActionListener(new LogOutButtonListener(firstWindow));
         userPanelButton.addActionListener(new UserPanelButtonListener(this));
         donateButton.addActionListener(new DonateButtonListener(this));
@@ -50,10 +50,10 @@ public class SecondWindow {
 
         List<String> array = new ArrayList<>();
 
-        array.add(Cryptocurrency.BTC.toString() + " -> " + client.getWallet().get("BTC").toString() + " -> $" + CryptoPrices.getAllBtcUserInUSD(client));
-        array.add(Cryptocurrency.ETH.toString() + " -> " + client.getWallet().get("ETH").toString()+ " -> $"+ CryptoPrices.getAllEthUserInUSD(client) );
-        array.add(Cryptocurrency.ADA.toString() + " -> " + client.getWallet().get("ADA").toString()+ " -> $" + CryptoPrices.getAllAdaUserInUSD(client) );
-        array.add(Cryptocurrency.USDT.toString() + " -> " + client.getWallet().get("Tether USD").toString());
+        array.add(Cryptocurrency.BTC + " -> " + client.getWallet().get("BTC").toString() + " -> $" + CryptoPrices.getAllBtcUserInUSD(client));
+        array.add(Cryptocurrency.ETH + " -> " + client.getWallet().get("ETH").toString()+ " -> $"+ CryptoPrices.getAllEthUserInUSD(client) );
+        array.add(Cryptocurrency.ADA + " -> " + client.getWallet().get("ADA").toString()+ " -> $" + CryptoPrices.getAllAdaUserInUSD(client) );
+        array.add(Cryptocurrency.USDT + " -> " + client.getWallet().get("Tether USD").toString());
         centerList.setListData(array.toArray());
     }
 
