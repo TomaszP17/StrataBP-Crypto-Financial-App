@@ -15,7 +15,6 @@ public class FirstWindow extends JFrame{
         setSize(new Dimension(1000, 1000));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         pack();
-
         setVisible(true);
 
         logInButton.addActionListener(new LogInButtonListener(this));
@@ -25,7 +24,6 @@ public class FirstWindow extends JFrame{
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(FirstWindow::new);
-
     }
 
     /**
