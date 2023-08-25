@@ -10,6 +10,7 @@ public class BackToFirstWindowListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        User.setCurrentUser(null);
         firstWindow.changeWindow(firstWindow.getMainPanel());
     }
 }

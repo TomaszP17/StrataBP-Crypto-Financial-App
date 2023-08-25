@@ -48,9 +48,9 @@ public class AdminDonateDialog extends JDialog {
         double amountDouble = parseDouble(arrayWithDataString.get(1));
         String receiverEmail = arrayWithDataString.get(2);
         ClientsController.donateMoney(receiverEmail, crypto, amountDouble);
-
+        Client sender = ClientsController.findClientByUser(User.getCurrentUser());
         TransactionController.addNewTransaction(
-                User.getCurrentUser(),
+                sender,
                 ClientsController.findByEmail(receiverEmail),
                 Cryptocurrency.valueOf(crypto),
                 amountDouble

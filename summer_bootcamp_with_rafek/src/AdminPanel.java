@@ -13,16 +13,16 @@ public class AdminPanel{
     private FirstWindow firstWindow;
     public AdminPanel(FirstWindow firstWindow) {
         this.firstWindow = firstWindow;
-
-        allUsersButton.addActionListener(new AllUsersButtonListener(firstWindow));
-
-        transactionHistoryButton.addActionListener(new TransactionHistoryButtonListener(firstWindow));
-
+        allUsersButton.addActionListener(new AllUsersButtonListener(firstWindow, this));
+        transactionHistoryButton.addActionListener(new TransactionHistoryButtonListener(firstWindow, this));
         donateMoneyToUserButton.addActionListener(new AdminDonateButtonListener());
         backButton.addActionListener(new BackToFirstWindowListener(firstWindow));
     }
 
     public JPanel getMainPanel() {
         return panel1;
+    }
+    public void changeWindowToAdminPanel(){
+        firstWindow.changeWindow(panel1);
     }
 }

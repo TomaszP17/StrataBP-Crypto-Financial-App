@@ -16,11 +16,11 @@ public class AllUsersWindow {
     private JTable table;
     private JLabel bottomLabel;
     private DefaultTableModel tableModel;
+    private final AdminPanel adminPanel;
 
-    public AllUsersWindow() {
-        backButton.addActionListener(e -> {
-            System.out.println("Back Button Clicked!");
-        });
+    public AllUsersWindow(AdminPanel adminPanel) {
+        this.adminPanel = adminPanel;
+        backButton.addActionListener(new BackButtonToAdminPanelListener(adminPanel));
 
         searchUserButton.addActionListener(e -> {
             System.out.println("Search Button Clicked!");

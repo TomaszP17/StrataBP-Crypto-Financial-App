@@ -15,12 +15,12 @@
           <text value="ALL TRANSACTIONS"/>
         </properties>
       </component>
-      <grid id="a3c4b" layout-manager="BorderLayout" hgap="0" vgap="0">
+      <grid id="a3c4b" binding="centerPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
         <constraints border-constraint="Center"/>
         <properties/>
         <border type="none"/>
         <children>
-          <grid id="7a00f" layout-manager="GridBagLayout">
+          <grid id="7a00f" binding="buttonPanel" layout-manager="GridBagLayout">
             <constraints border-constraint="North"/>
             <properties/>
             <border type="none"/>
