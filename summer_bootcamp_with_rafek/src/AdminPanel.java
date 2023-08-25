@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 
 public class AdminPanel{
     private JPanel panel1;
@@ -14,22 +13,16 @@ public class AdminPanel{
     private FirstWindow firstWindow;
     public AdminPanel(FirstWindow firstWindow) {
         this.firstWindow = firstWindow;
-
-        allUsersButton.addActionListener(e -> {
-
-        });
-
-        transactionHistoryButton.addActionListener(e -> {
-
-        });
-
-        donateMoneyToUserButton.addActionListener(e -> {
-
-        });
+        allUsersButton.addActionListener(new AllUsersButtonListener(firstWindow, this));
+        transactionHistoryButton.addActionListener(new TransactionHistoryButtonListener(firstWindow, this));
+        donateMoneyToUserButton.addActionListener(new AdminDonateButtonListener());
         backButton.addActionListener(new BackToFirstWindowListener(firstWindow));
     }
 
     public JPanel getMainPanel() {
         return panel1;
+    }
+    public void changeWindowToAdminPanel(){
+        firstWindow.changeWindow(panel1);
     }
 }

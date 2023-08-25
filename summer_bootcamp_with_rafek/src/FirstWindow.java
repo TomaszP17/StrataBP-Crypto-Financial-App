@@ -24,6 +24,7 @@ public class FirstWindow extends JFrame{
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(FirstWindow::new);
+        System.out.println();
     }
 
     /**

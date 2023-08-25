@@ -14,15 +14,9 @@ public class CryptoPrices {
     private static double etherumRate;
     private static double cardanoRate;
 
-
-
-
-
     public CryptoPrices() {
 
     }
-
-
     public static double getBitcoinRate() {
         OkHttpClient client = new OkHttpClient();
 

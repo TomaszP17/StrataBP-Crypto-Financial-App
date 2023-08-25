@@ -15,32 +15,33 @@ public class LogInButtonListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         JPanel panel = createLogInPanel();
-        ClientsController clients = new ClientsController();
 
         int result = JOptionPane.showConfirmDialog(null, panel, "LogIn option", JOptionPane.OK_CANCEL_OPTION);
         List<String> arrayWithParameters;
         if (result == JOptionPane.OK_OPTION) {
-
-            System.out.println("Clicked OK!");
             arrayWithParameters = getStringFromFields(panel);
-            setAdminPanel(arrayWithParameters);
-            Client client = clients.findByEmail(arrayWithParameters.get(0));
-            if (client != null) {
-                if (client.getPassword().equals(arrayWithParameters.get(1))) {
-                    System.out.println("You are Logged in ");
-                    SecondWindow secondWindow = new SecondWindow(firstWindow);
-                    firstWindow.changeWindow(secondWindow.getMainPanel());
-                    User.setCurrentUser(client);
-                    secondWindow.setCurrentUser();
-                    secondWindow.showClientWallet(client);
-                    System.out.println(User.getCurrentUser());
+            Client client = ClientsController.findByEmail(arrayWithParameters.get(0));
+            User.setCurrentUser(client);
+            if (isUserAdmin(arrayWithParameters)) {
+                setAdminPanel();
+            } else {
+                if (client != null) {
+                    if (client.getPassword().equals(arrayWithParameters.get(1))) {
+                        System.out.println("You are Logged in ");
+                        SecondWindow secondWindow = new SecondWindow(firstWindow);
+                        firstWindow.changeWindow(secondWindow.getMainPanel());
+                        secondWindow.setCurrentUser();
+                        secondWindow.showClientWallet(client);
+                    } else {
+                        System.out.println("Wrong password!");
+                    }
                 } else {
-                    System.out.println("Wrong password!");
+                    System.out.println("Clicked CANCEL!");
                 }
             }
-        } else {
-            System.out.println("Clicked CANCEL!");
         }
+
+
     }
 
     public JPanel createLogInPanel() {
@@ -70,16 +71,11 @@ public class LogInButtonListener implements ActionListener {
 
         return array;
     }
-
-    public void setAdminPanel(List<String> array){
-
+    private boolean isUserAdmin(List<String> array){
+        return array.get(0).equals("admin") && array.get(1).equals("admin");
+    }
+    public void setAdminPanel(){
         AdminPanel adminPanel = new AdminPanel(firstWindow);
-
-        if (array.get(0).equals("admin") && array.get(1).equals("admin")) {
-            SecondWindow secondWindow = new SecondWindow(firstWindow);
-            /*firstWindow.setSize(new Dimension(1000, 1000));
-            firstWindow.pack();*/
-            firstWindow.changeWindow(adminPanel.getMainPanel());
-        }
+        firstWindow.changeWindow(adminPanel.getMainPanel());
     }
 }

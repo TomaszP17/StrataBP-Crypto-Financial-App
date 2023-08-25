@@ -19,4 +19,7 @@ public class TransactionController {
     public static List<Transaction> getTransactionList() {
         return transactionList;
     }
+    public static void addNewTransaction(User from, User to, Cryptocurrency cryptocurrency, double amount){
+        transactionList.add(new Transaction(from, to, cryptocurrency, amount));
+    }
 }
