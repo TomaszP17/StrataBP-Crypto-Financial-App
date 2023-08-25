@@ -1,4 +1,3 @@
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -6,6 +5,15 @@ public class Client extends User {
 
 
     private Map<String, Double> wallet = new HashMap<>();
+    private Limit limit;
+
+    public void setLimit(Limit limit) {
+        this.limit = limit;
+    }
+
+    public Limit getLimit() {
+        return limit;
+    }
 
     public Map<String, Double> getWallet() {
         return wallet;
@@ -28,6 +36,7 @@ public class Client extends User {
         wallet.put("ETH", 10.0);
         wallet.put("ADA", 10.0);
         wallet.put("Tether USD", 0.0);
+        this.limit = Limit._1000;
 
     }
 
