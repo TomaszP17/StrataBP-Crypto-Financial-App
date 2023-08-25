@@ -15,9 +15,7 @@ public class AdminPanel{
     public AdminPanel(FirstWindow firstWindow) {
         this.firstWindow = firstWindow;
 
-        allUsersButton.addActionListener(e -> {
-
-        });
+        allUsersButton.addActionListener(new AllUsersButtonListener(firstWindow));
 
         transactionHistoryButton.addActionListener(e -> {
 

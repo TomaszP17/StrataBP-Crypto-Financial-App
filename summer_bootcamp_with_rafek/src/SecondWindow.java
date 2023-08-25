@@ -20,7 +20,6 @@ public class SecondWindow {
     private UserInfoPanel userInfoPanel;
     public SecondWindow(FirstWindow firstWindow) {
         this.firstWindow = firstWindow;
-        //userInfoPanel = new UserInfoPanel(this); //
 
         limitsButton.addActionListener(new LimitButtonListener());
         sendButton.addActionListener(new SendButtonListener(this));
