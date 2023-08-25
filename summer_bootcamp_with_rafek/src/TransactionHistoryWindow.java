@@ -6,4 +6,11 @@ public class TransactionHistoryWindow {
     private JButton searchButton;
     private JTable table1;
     private JButton backButton;
+
+    public TransactionHistoryWindow() {
+    }
+
+    public JPanel getMainPanel() {
+        return panel1;
+    }
 }

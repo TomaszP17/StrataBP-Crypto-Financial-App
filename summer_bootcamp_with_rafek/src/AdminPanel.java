@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 
 public class AdminPanel{
     private JPanel panel1;
@@ -17,13 +16,9 @@ public class AdminPanel{
 
         allUsersButton.addActionListener(new AllUsersButtonListener(firstWindow));
 
-        transactionHistoryButton.addActionListener(e -> {
+        transactionHistoryButton.addActionListener(new TransactionHistoryButtonListener(firstWindow));
 
-        });
-
-        donateMoneyToUserButton.addActionListener(e -> {
-
-        });
+        donateMoneyToUserButton.addActionListener(new AdminDonateButtonListener());
         backButton.addActionListener(new BackToFirstWindowListener(firstWindow));
     }
 
