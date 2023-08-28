@@ -7,10 +7,10 @@ public enum Cryptocurrency {
     Cryptocurrency(String name) {
         this.name = name;
     }
-    @Override
+    /*@Override
     public String toString() {
         return name;
-    }
+    }*/
 
     /**
      * Method returns Key of the enum constant

@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,6 +23,7 @@ public class AdminSearchButtonListener implements ActionListener {
             String searchedValue = arrayWithDataFromFields.get(1);
 
             //search value by param
+            updateTableModel(param, searchedValue);
         }
     }
     private JPanel createSearchPanel(){
@@ -59,7 +61,12 @@ public class AdminSearchButtonListener implements ActionListener {
         return array;
     }
 
-    //TODO add other params
+    /**
+     * Searching data by entered param
+     * @param param - column name
+     * @param searchedValue - user entered value
+     * @return - array with similar rows
+     */
     private List<Transaction> searchForValue(String param, String searchedValue){
         List<Transaction> transactions = TransactionController.getTransactionList();
         List<Transaction> arrayWithResult = new ArrayList<>();
@@ -76,12 +83,40 @@ public class AdminSearchButtonListener implements ActionListener {
                         arrayWithResult.add(transaction);
                     }
                     break;
+                case "TO":
+                    if(searchedValue.equals(transaction.getTo().getEmail())){
+                        arrayWithResult.add(transaction);
+                    }
+                    break;
+                case "CRYPTO":
+                    if(searchedValue.equals(transaction.getCryptocurrency().getKey())){
+                        arrayWithResult.add(transaction);
+                    }
+                    break;
+                case "AMOUNT":
+                    if(searchedValue.equals(String.valueOf(transaction.getAmount()))){
+                        arrayWithResult.add(transaction);
+                    }
+                    break;
+                case "DATE":
+                    if(searchedValue.equals(transaction.getDate())){
+                        arrayWithResult.add(transaction);
+                    }
+                    break;
                 default:
                     System.out.println("Wrong param");
             }
         }
+        System.out.println(arrayWithResult);
         return arrayWithResult;
     }
-
+    //set new tableModel
+    private void updateTableModel(String param, String searchedValue) {
+        String[] columnNames = historyWindow.getColumnNames();
+        DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+        List<Transaction> searchResults = searchForValue(param, searchedValue);
+        TransactionHistoryWindow.addUserTransactions(tableModel, searchResults);
+        historyWindow.updateTable(tableModel);
+    }
 
 }
