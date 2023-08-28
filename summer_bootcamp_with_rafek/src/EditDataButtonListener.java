@@ -10,7 +10,6 @@ public class EditDataButtonListener implements ActionListener {
     public EditDataButtonListener(UserInfoPanel userInfoPanel) {
         this.userInfoPanel = userInfoPanel;
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         Component component = userInfoPanel.getMainPanel();

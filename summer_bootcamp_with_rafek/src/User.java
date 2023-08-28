@@ -1,5 +1,3 @@
-import java.time.LocalDate;
-
 public class User {
     private static User currentUser=null;
     private static int counter=1;
@@ -80,6 +78,12 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    public int getUserId() {
+        return userId;
+    }
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     @Override

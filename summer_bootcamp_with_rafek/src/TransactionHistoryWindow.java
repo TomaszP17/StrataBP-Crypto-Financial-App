@@ -3,7 +3,6 @@ import javax.swing.table.DefaultTableModel;
 import java.util.List;
 
 public class TransactionHistoryWindow {
-
     private JPanel panel1;
     private JButton searchButton;
     private JTable table1;
