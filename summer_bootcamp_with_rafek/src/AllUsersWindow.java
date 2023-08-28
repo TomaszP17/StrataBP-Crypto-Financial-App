@@ -26,31 +26,29 @@ public class AllUsersWindow {
         this.adminPanel = adminPanel;
         backButton.addActionListener(new BackButtonToAdminPanelListener(adminPanel));
 
+
         searchUserButton.addActionListener(e -> {
             System.out.println("Search Button Clicked!");
         });
 
-        editUserButton.addActionListener(e -> {
-            System.out.println("Edit Button Clicked!");
-        });
+        editUserButton.addActionListener(new AdminEditUserButtonListener(this));
 
         deleteUserButton.addActionListener(e -> {
             System.out.println("Delete User Clicked!");
         });
-
-        createAllTransactionList();
+        createAllTransactionTable();
     }
-    private void createAllTransactionList(){
+    private void createAllTransactionTable(){
         columnNames = new String[]{"ID", "FROM", "TO", "CRYPTO", "AMOUNT", "DATE"};
         tableModel = new DefaultTableModel(columnNames, 0);
-        addUsers(tableModel, data);
+        addUsers(tableModel);
         table = new JTable(tableModel);
         centerPanel.add(new JScrollPane(table));
     }
 
-    public static void addUsers(DefaultTableModel tableModel, List<Client> data) {
+    public void addUsers(DefaultTableModel tableModel) {
         ClientsController clientsController = new ClientsController();
-        data = clientsController.findAll();
+        List<Client> data = clientsController.findAll();
         tableModel.setRowCount(0);
         for (Client client : data) {
             Object[] rowData = {
@@ -67,5 +65,9 @@ public class AllUsersWindow {
     }
     public JPanel getMainPanel(){
         return panel1;
+    }
+
+    public JTable getTable() {
+        return table;
     }
 }
