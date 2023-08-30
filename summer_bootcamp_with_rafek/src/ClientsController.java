@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -99,5 +100,21 @@ public class ClientsController {
     public static Client findClientByUser(User user){
 
         return findByEmail(user.getEmail());
+    }
+
+    /**
+     * Deleting Client from array
+     * @param email - client's email
+     */
+    public static void deleteClient(String email){
+        clients.remove(ClientsController.findByEmail(email));
+    }
+
+    /**
+     * Updating clients list
+     * @param newList - list with new Clients
+     */
+    public static void updateClientsList(List<Client> newList){
+        clients = newList;
     }
 }

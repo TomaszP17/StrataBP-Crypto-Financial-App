@@ -33,13 +33,11 @@ public class AllUsersWindow {
 
         editUserButton.addActionListener(new AdminEditUserButtonListener(this));
 
-        deleteUserButton.addActionListener(e -> {
-            System.out.println("Delete User Clicked!");
-        });
+        deleteUserButton.addActionListener(new AdminDeleteUserButtonListener(this));
         createAllTransactionTable();
     }
     private void createAllTransactionTable(){
-        columnNames = new String[]{"ID", "FROM", "TO", "CRYPTO", "AMOUNT", "DATE"};
+        columnNames = new String[]{"ID", "NAME", "LAST NAME", "EMAIL", "DATE OF BIRTH", "PESEL", "PASSWORD"};
         tableModel = new DefaultTableModel(columnNames, 0);
         addUsers(tableModel);
         table = new JTable(tableModel);
@@ -69,5 +67,24 @@ public class AllUsersWindow {
 
     public JTable getTable() {
         return table;
+    }
+    public void updateTable(DefaultTableModel newModel){
+        table.setModel(newModel);
+    }
+    public void updateTable() {
+        DefaultTableModel newModel = new DefaultTableModel(columnNames, 0);
+        addUsers(newModel);
+        table.setModel(newModel);
+    }
+    public void setTableWithEditedData(List<String> newArray){
+        /*JTable table = allUsersWindow.getTable();
+        DefaultTableModel tableModel = (DefaultTableModel) table.getModel();*/
+        int selectedRow = table.getSelectedRow();
+
+        if(selectedRow >= 0){
+            for(int i = 0; i < newArray.size(); i++){
+                tableModel.setValueAt(newArray.get(i), selectedRow, i);
+            }
+        }
     }
 }

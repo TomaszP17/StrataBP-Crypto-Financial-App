@@ -1,0 +1,2 @@
+LOGIN="stratabp@gmail.com"
+PASSWORD=JavaProgram123

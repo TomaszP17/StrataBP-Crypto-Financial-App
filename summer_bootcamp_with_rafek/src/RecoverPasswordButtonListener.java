@@ -8,6 +8,7 @@ public class RecoverPasswordButtonListener implements ActionListener {
         JPanel panel = createRecoverPanel();
         //show window with enter login, and you will have a message
         JOptionPane.showMessageDialog(null, panel, "Password Recovery", JOptionPane.OK_CANCEL_OPTION);
+
     }
     public JPanel createRecoverPanel(){
         JPanel panel = new JPanel();

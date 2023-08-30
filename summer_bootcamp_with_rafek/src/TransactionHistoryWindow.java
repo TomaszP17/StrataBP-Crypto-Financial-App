@@ -37,16 +37,17 @@ public class TransactionHistoryWindow {
     public static void addUserTransactions(DefaultTableModel tableModel, List<Transaction> data) {
         tableModel.setRowCount(0);
         for (Transaction transaction : data) {
-                Object[] rowData = {
-                        transaction.getId(),
-                        transaction.getFrom().getEmail(),
-                        transaction.getTo().getEmail(),
-                        transaction.getCryptocurrency(),
-                        transaction.getAmount(),
-                        transaction.getDate()
-                };
-                tableModel.addRow(rowData);
+            Object[] rowData = {
+                    transaction.getId(),
+                    transaction.getFrom() != null ? transaction.getFrom().getEmail() : "N/A",
+                    transaction.getTo() != null ? transaction.getTo().getEmail() : "N/A",
+                    transaction.getCryptocurrency(),
+                    transaction.getAmount(),
+                    transaction.getDate()
+            };
+            tableModel.addRow(rowData);
         }
+
     }
     public JPanel getMainPanel() {
         return panel1;

@@ -1,9 +1,11 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 public class AdminEditUserButtonListener implements ActionListener {
     private final AllUsersWindow allUsersWindow;
@@ -24,29 +26,48 @@ public class AdminEditUserButtonListener implements ActionListener {
             int result = JOptionPane.showConfirmDialog(panel, windowPanel, "Edit User", JOptionPane.OK_CANCEL_OPTION);
             if(result == JOptionPane.OK_OPTION){
                 System.out.println("ok!");
+                List<String> arrayWithDataPanel = getDataFromPanel(windowPanel);
+                List<String> arrayWithDataTable = getSelectedRowData(table);
+                //compare these 2 arrays and change table in alluserswindow
+                int diff = counterDifference(arrayWithDataPanel,arrayWithDataTable);
+                if(diff > 0){
+                    allUsersWindow.setTableWithEditedData(arrayWithDataPanel);
+                    DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+                    allUsersWindow.updateTable(tableModel);
+
+                    List<Client> updatedClients = updateClientsListInController(tableModel.getDataVector());
+                    ClientsController.updateClientsList(updatedClients);
+                }
+
             }
         } else {
             System.out.println("No row selected.");
         }
     }
+
+    /**
+     * Creating Panel with name of column and filled by data from table
+     * @param table - table with data from selected row
+     * @return - new panel
+     */
     private JPanel createPanel(JTable table){
-        JPanel panel = new JPanel(new GridLayout(6, 2, 10, 10));
+        JPanel panel = new JPanel(new GridLayout(7, 2, 10, 10));
         List<String> arrayWithData = getSelectedRowData(table);
 
-        JLabel idLabel = new JLabel(arrayWithData.get(0));
-        JTextField idTextField = new JTextField(20);
-        JLabel nameLabel = new JLabel(arrayWithData.get(1));
-        JTextField nameTextField = new JTextField(20);
-        JLabel lastNameLabel = new JLabel(arrayWithData.get(2));
-        JTextField lastNameTextField = new JTextField(20);
-        JLabel emailLabel = new JLabel(arrayWithData.get(3));
-        JTextField emailTextField = new JTextField(20);
-        JLabel dateOfBirthLabel = new JLabel(arrayWithData.get(4));
-        JTextField dateOfBirthTextField = new JTextField(20);
-        JLabel peselLabel = new JLabel(arrayWithData.get(5));
-        JTextField peselTextField = new JTextField(20);
-        /*JLabel passwordLabel = new JLabel(arrayWithData.get(6));
-        JTextField passwordTextField = new JTextField(20);*/
+        JLabel idLabel = new JLabel("ID");
+        JTextField idTextField = new JTextField(arrayWithData.get(0),20);
+        JLabel nameLabel = new JLabel("NAME");
+        JTextField nameTextField = new JTextField(arrayWithData.get(1),20);
+        JLabel lastNameLabel = new JLabel("LAST NAME");
+        JTextField lastNameTextField = new JTextField(arrayWithData.get(2),20);
+        JLabel emailLabel = new JLabel("EMAIL ");
+        JTextField emailTextField = new JTextField(arrayWithData.get(3),20);
+        JLabel dateOfBirthLabel = new JLabel("DATE OF BIRTH");
+        JTextField dateOfBirthTextField = new JTextField(arrayWithData.get(4),20);
+        JLabel peselLabel = new JLabel("PESEL");
+        JTextField peselTextField = new JTextField(arrayWithData.get(5),20);
+        JLabel passwordLabel = new JLabel("PASSWORD");
+        JTextField passwordTextField = new JTextField(arrayWithData.get(6),20);
 
         panel.add(idLabel);
         panel.add(idTextField);
@@ -60,24 +81,75 @@ public class AdminEditUserButtonListener implements ActionListener {
         panel.add(dateOfBirthTextField);
         panel.add(peselLabel);
         panel.add(peselTextField);
-        /*panel.add(passwordLabel);
-        panel.add(passwordTextField);*/
+        panel.add(passwordLabel);
+        panel.add(passwordTextField);
 
         return panel;
     }
 
+    /**
+     * Getting data from selected table row
+     * @param table - all users info table
+     * @return - list of row data String
+     */
     private List<String> getSelectedRowData(JTable table){
-        int selectedRow = table.getSelectedRow();
-        List<String> arrayList = new ArrayList<>();
-        if(selectedRow >= 0) {
-            int columnCount = table.getColumnCount();
-            for (int i = 0; i < columnCount; i++) {
-                Object data = table.getValueAt(selectedRow, i);
-                arrayList.add(data != null ? data.toString() : "");
-            }
-        }else{
-            System.out.println("No row selected.");
-        }
-        return arrayList;
+        return AdminDeleteUserButtonListener.getStrings(table);
     }
+
+    /**
+     * Getting data from windowPanel
+     * @param panel - windowPanel
+     * @return - array with data in String
+     */
+    private List<String> getDataFromPanel(JPanel panel){
+        Component[] components = panel.getComponents();
+        List<String> array = new ArrayList<>();
+        for(Component x : components){
+            if(x instanceof JTextField){
+                String rowData = ((JTextField) x).getText();
+                array.add(rowData);
+            }
+        }
+        System.out.println(array);
+        return array;
+    }
+
+    /**
+     * Returning number of difference between arrays
+     * @param array1 - first Array
+     * @param array2 - second Array
+     * @return - number of difference
+     */
+    private int counterDifference(List<String> array1, List<String> array2){
+        if(array1.size() != array2.size()){
+            return -1;
+        }
+        int counter = 0;
+        for(int i = 0; i < array1.size(); i++){
+            if(array1.get(i).equals(array2.get(i))){
+                counter++;
+            }
+        }
+        return counter;
+    }
+
+
+    private List<Client> updateClientsListInController(Vector<Vector> newData) {
+        List<Client> updatedClients = new ArrayList<>();
+
+        for (Vector<Object> row : newData) {
+            String name = row.get(1).toString();
+            String lastname = row.get(2).toString();
+            String pesel = row.get(5).toString();
+            String email = row.get(3).toString();
+            String dateOfBirth = row.get(4).toString();
+            String password = row.get(6).toString();
+
+            Client client = new Client(name, lastname, dateOfBirth, email, pesel, password);
+            updatedClients.add(client);
+        }
+
+        return updatedClients;
+    }
+
 }
