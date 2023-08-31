@@ -12,5 +12,9 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="okhttp-3.9.0" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.mail:jakarta.mail-api:2.1.1" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.activation:jakarta.activation-api:2.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.angus:jakarta.mail:1.0.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.eclipse.angus:angus-activation:1.0.0" level="project" />
   </component>
 </module>
