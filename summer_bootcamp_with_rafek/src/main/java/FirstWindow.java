@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 public class FirstWindow extends JFrame{
     private JPanel panel1;
@@ -9,6 +10,7 @@ public class FirstWindow extends JFrame{
     private JButton signUpButton;
     private JButton recoverPassword;
     private JLabel bottomLabel;
+
     public FirstWindow() {
         setTitle("STRATA.BP");
         setContentPane(panel1);
@@ -24,14 +26,14 @@ public class FirstWindow extends JFrame{
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(FirstWindow::new);
-        System.out.println();
     }
 
     /**
      * Change panel to other
+     *
      * @param panel - e.x SecondWindow mainPanel or other Window panel
      */
-    public void changeWindow(JPanel panel){
+    public void changeWindow(JPanel panel) {
         setContentPane(panel);
         revalidate();
         repaint();
@@ -40,9 +42,10 @@ public class FirstWindow extends JFrame{
 
     /**
      * Return mainPanel
+     *
      * @return - mainPanel
      */
-    public JPanel getMainPanel(){
+    public JPanel getMainPanel() {
         return panel1;
     }
 }

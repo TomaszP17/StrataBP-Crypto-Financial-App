@@ -8,7 +8,7 @@ public class ClientsController {
 
     static {
         clients.add(new Client("Rafal", "Przybyl", "12-33-00",
-                "rafal@gmail.com","111","haslo1" ));
+                "rafalprzybyl17@gmail.com","111","haslo1" ));
         clients.add(new Client("thommy", "Shelby", "12-33-00",
                 "thommy@gmail.com","222","haslo2" ));
         clients.add(new Client("John", "Przybyl", "12-33-00",

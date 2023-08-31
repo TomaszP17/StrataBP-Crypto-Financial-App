@@ -49,8 +49,8 @@ public class HistoryWindow extends JFrame{
                     transaction.getFrom().getEmail().equals(currentClient.getEmail())){
                 Object[] rowData = {
                         transaction.getId(),
-                        transaction.getFrom().getEmail(),
-                        transaction.getTo().getEmail(),
+                        transaction.getFrom() != null ? transaction.getFrom().getEmail() : "N/A",
+                        transaction.getTo() != null ? transaction.getTo().getEmail() : "N/A",
                         transaction.getCryptocurrency(),
                         transaction.getAmount(),
                         transaction.getDate()

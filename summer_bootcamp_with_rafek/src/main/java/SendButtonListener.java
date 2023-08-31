@@ -22,7 +22,7 @@ public class SendButtonListener implements ActionListener {
         if(result == JOptionPane.OK_OPTION){
 
             arrayWithParameters = getStringFromFields(panel);
-            //Client client1 = ClientsController.findClientByUser(User.getCurrentUser());
+
             Client client1 = ClientsController.findClientByUser(User.getCurrentUser());
             Client client2 = ClientsController.findByEmail(arrayWithParameters.get(2));
 
@@ -36,6 +36,13 @@ public class SendButtonListener implements ActionListener {
                     String keyCrypto = arrayWithParameters.get(0);
                     double amount = Double.parseDouble(arrayWithParameters.get(1));
                     ClientsController.sendFromTo(client1.getEmail(), client2.getEmail(), keyCrypto, amount);
+                    //todo create new transaction
+                    Cryptocurrency crypto = Cryptocurrency.valueOf(keyCrypto);
+                    TransactionController.addNewTransaction(
+                            ClientsController.findByEmail(client1.getEmail()),
+                            ClientsController.findByEmail(client2.getEmail()),
+                            crypto,
+                            amount);
                     secondWindow.updateClientWalletView(client1);
                     JOptionPane.showMessageDialog(null, "Operation successful!");
                 }

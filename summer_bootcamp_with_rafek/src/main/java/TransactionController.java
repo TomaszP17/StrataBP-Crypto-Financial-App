@@ -7,10 +7,10 @@ public class TransactionController {
 
     static {
         transactionList.add(new Transaction(ClientsController.findByEmail("test"),
-                            ClientsController.findByEmail("rafal@gmail.com"),
+                            ClientsController.findByEmail("rafalprzybyl17@gmail.com"),
                             Cryptocurrency.BTC,
                             10));
-        transactionList.add(new Transaction(ClientsController.findByEmail("rafal@gmail.com"),
+        transactionList.add(new Transaction(ClientsController.findByEmail("rafalprzybyl17@gmail.com"),
                             ClientsController.findByEmail("thommy@gmail.com"),
                             Cryptocurrency.ETH,
                             20));
