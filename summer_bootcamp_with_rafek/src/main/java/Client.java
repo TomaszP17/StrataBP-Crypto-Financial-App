@@ -36,7 +36,7 @@ public class Client extends User {
         wallet.put("ETH", 10.0);
         wallet.put("ADA", 10.0);
         wallet.put("Tether USD", 0.0);
-        this.limit = Limit._1000;
+        this.limit = Limit.LIMIT_1000;
 
     }
 

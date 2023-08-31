@@ -16,6 +16,9 @@ public class SecondWindow {
     private JLabel bottomLabel;
     private JButton logOutButton;
     private JLabel userNameLabel;
+    private JLabel totalValueLabel;
+    private JLabel walletValueLabel;
+    private JLabel nicknameLabel;
     private final FirstWindow firstWindow;
     private UserInfoPanel userInfoPanel;
     public SecondWindow(FirstWindow firstWindow) {
@@ -31,6 +34,8 @@ public class SecondWindow {
         List<String> array = new ArrayList<>();
 
         centerList.setListData(array.toArray());
+        //TODO totalValueLabel.setText();
+
     }
     public JPanel getMainPanel(){
         return panel1;
@@ -51,10 +56,10 @@ public class SecondWindow {
 
         List<String> array = new ArrayList<>();
 
-        array.add(Cryptocurrency.BTC + " -> " + client.getWallet().get("BTC").toString() + " -> $" + CryptoPrices.getAllBtcUserInUSD(client));
-        array.add(Cryptocurrency.ETH + " -> " + client.getWallet().get("ETH").toString()+ " -> $"+ CryptoPrices.getAllEthUserInUSD(client) );
-        array.add(Cryptocurrency.ADA + " -> " + client.getWallet().get("ADA").toString()+ " -> $" + CryptoPrices.getAllAdaUserInUSD(client) );
-        array.add(Cryptocurrency.USDT + " -> " + client.getWallet().get("Tether USD").toString());
+        array.add(Cryptocurrency.BTC + ": " + client.getWallet().get("BTC").toString() + " -> $" + CryptoPrices.getAllBtcUserInUSD(client));
+        array.add(Cryptocurrency.ETH + ": " + client.getWallet().get("ETH").toString()+ " -> $"+ CryptoPrices.getAllEthUserInUSD(client) );
+        array.add(Cryptocurrency.ADA + ": " + client.getWallet().get("ADA").toString()+ " -> $" + CryptoPrices.getAllAdaUserInUSD(client) );
+        array.add(Cryptocurrency.USDT + ": " + client.getWallet().get("Tether USD").toString());
         centerList.setListData(array.toArray());
     }
 

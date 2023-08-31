@@ -21,14 +21,14 @@ public class LimitButtonListener implements ActionListener, PanelListener {
 
     public JPanel createLimitsPanel(){
         JPanel panel = new JPanel(new GridLayout(6, 1, 10, 10));
-
-        JLabel actualLimitLabel = new JLabel("Actual limit: " );// + obecny limit na koncie);
+        Client client = (Client) User.getCurrentUser();
+        JLabel actualLimitLabel = new JLabel("Actual limit: " +  client.getLimit());// + obecny limit na koncie);
         JLabel changeLimitLabel = new JLabel("Change your daily transfer limit: ");
         JComboBox<Limit> limitJComboBox = new JComboBox<>();
-        limitJComboBox.addItem(Limit._10);
-        limitJComboBox.addItem(Limit._100);
-        limitJComboBox.addItem(Limit._1000);
-        limitJComboBox.addItem(Limit._10000);
+        limitJComboBox.addItem(Limit.LIMIT_10);
+        limitJComboBox.addItem(Limit.LIMIT_100);
+        limitJComboBox.addItem(Limit.LIMIT_1000);
+        limitJComboBox.addItem(Limit.LIMIT_10000);
         JLabel confirmLabel = new JLabel("Confirm your password: ");
         JPasswordField passwordField = new JPasswordField();
 
@@ -76,6 +76,10 @@ public class LimitButtonListener implements ActionListener, PanelListener {
         if(isDataCorrect(array)){
             //here we need to change limit for this account
             //TODO
+            Client client = ClientsController.findClientByUser(User.getCurrentUser());
+            String limitString = array.get(0);
+            Limit chosenLimit = Limit.valueOf("LIMIT_" + limitString);
+            client.setLimit(chosenLimit);
             //here we need to send information about status
             JOptionPane.showMessageDialog(panel, "Limit changed for Your account!");
         }else{
