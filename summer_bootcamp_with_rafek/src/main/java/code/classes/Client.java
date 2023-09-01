@@ -36,10 +36,10 @@ public class Client extends User {
 
     public Client(String name, String lastname, String dateOfBirth, String email, String pesel, String password) {
         super(name, lastname, dateOfBirth, email, pesel, password);
-        wallet.put("BTC", 10.0);
-        wallet.put("ETH", 10.0);
+        wallet.put("BTC", 1.0);
+        wallet.put("ETH", 7.0);
         wallet.put("ADA", 10.0);
-        wallet.put("Tether USD", 10.0);
+        wallet.put("USDT", 2.0);
         this.limit = Limit.LIMIT_1000;
 
     }
@@ -63,7 +63,12 @@ public class Client extends User {
         double sum = wallet.get(keyOfCrypto)-ammount;
         wallet.put(keyOfCrypto, sum);
     }
-    public double getWalletValue(){
-        return Math.round(wallet.get("BTC")*CryptoPrices.getBitcoinRate()+wallet.get("ETH")*CryptoPrices.getEtherumRate()+wallet.get("ADA")*CryptoPrices.getCardanoRate()+wallet.get("Tether USD")*CryptoPrices.getTetherRate()*100)/100;
+    public String getWalletValue(){
+        double result = (double) Math.round( ((wallet.get("BTC")*CryptoPrices.getBitcoinRate() ) +
+                (wallet.get("ETH")*CryptoPrices.getEtherumRate() ) +
+                (wallet.get("ADA")*CryptoPrices.getCardanoRate() ) +
+                (wallet.get("USDT")*CryptoPrices.getTetherRate())) *
+                 100) / 100;
+        return String.valueOf(result);
     }
 }

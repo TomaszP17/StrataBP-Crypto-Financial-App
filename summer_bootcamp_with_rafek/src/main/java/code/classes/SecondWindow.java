@@ -4,6 +4,7 @@ import code.classes.enums.Cryptocurrency;
 import code.listeners.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,8 +22,8 @@ public class SecondWindow {
     private JButton logOutButton;
     private JLabel userNameLabel;
     private JLabel totalValueLabel;
-    private JLabel walletValueLabel;
     private JLabel nicknameLabel;
+    private JPanel chartCenterPanel;
     private final FirstWindow firstWindow;
     private UserInfoPanel userInfoPanel;
     public SecondWindow(FirstWindow firstWindow) {
@@ -35,9 +36,11 @@ public class SecondWindow {
         donateButton.addActionListener(new DonateButtonListener(this));
         historyButton.addActionListener(new HistoryButtonListener(this));
         marketButton.addActionListener(new MarketButtonListener(this));
-        List<String> array = new ArrayList<>();
 
-        centerList.setListData(array.toArray());
+        PieChart pieChart = new PieChart("Wallet Value: " + ClientsController.findClientByUser(User.getCurrentUser()).getWalletValue() + "$"); // Zmodyfikuj tytuł według swoich potrzeb
+        JPanel chartPanel = pieChart.createChartPanel();
+        chartPanel.setPreferredSize(new Dimension(500, 270)); // Ustaw odpowiednie wymiary
+        chartCenterPanel.add(chartPanel);
         //TODO totalValueLabel.setText();
 
     }
@@ -45,42 +48,9 @@ public class SecondWindow {
         return panel1;
     }
 
-    /**
-     * todo ?
-     */
    public void setCurrentUser(){
            userNameLabel.setText(User.getCurrentUser().getName());
    }
-    public void setWalletValue(){
-        totalValueLabel.setText(Double.toString(ClientsController.findClientByUser(User.getCurrentUser()).getWalletValue()));
-
-    }
-
-
-    /**
-     * TODO ?
-     * @param client
-     */
-    public void showClientWallet(Client client){
-
-        List<String> array = new ArrayList<>();
-        setWalletValue();
-
-
-        array.add(Cryptocurrency.BTC + ": " + client.getWallet().get("BTC").toString() + " -> $" + CryptoPrices.getAllBtcUserInUSD(client));
-        array.add(Cryptocurrency.ETH + ": " + client.getWallet().get("ETH").toString()+ " -> $"+ CryptoPrices.getAllEthUserInUSD(client) );
-        array.add(Cryptocurrency.ADA + ": " + client.getWallet().get("ADA").toString()+ " -> $" + CryptoPrices.getAllAdaUserInUSD(client) );
-        array.add(Cryptocurrency.USDT + ": " + client.getWallet().get("Tether USD").toString()+ " -> $" + CryptoPrices.getAllUsdtUserInUSD(client)  );
-        centerList.setListData(array.toArray());
-    }
-
-    /**
-     * TODO ?
-     * @param client
-     */
-    public void updateClientWalletView(Client client){
-        showClientWallet(client);
-    }
 
     public void changeMainPanelToHistoryPanel(JPanel panel){
         firstWindow.changeWindow(panel);

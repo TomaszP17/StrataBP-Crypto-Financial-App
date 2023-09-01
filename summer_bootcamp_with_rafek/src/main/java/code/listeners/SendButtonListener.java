@@ -48,7 +48,7 @@ public class SendButtonListener implements ActionListener {
                             ClientsController.findByEmail(client2.getEmail()),
                             crypto,
                             amount);
-                    secondWindow.updateClientWalletView(client1);
+                   //secondWindow.updateClientWalletView(client1);
                     JOptionPane.showMessageDialog(null, "Operation successful!");
                 }
             }else {

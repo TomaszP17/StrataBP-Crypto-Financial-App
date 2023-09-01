@@ -9,7 +9,7 @@ import okhttp3.Response;
 import java.io.IOException;
 
 public class CryptoPrices {
-    private static final String APIkey="F57399AD-BD59-438E-BC05-5563053EA8D7";
+    private static final String APIkey="5F14456E-057E-4045-B527-55C7FAA3D822";
     private static double bitcoinRate;
     private static double etherumRate;
     private static double cardanoRate;
@@ -22,7 +22,7 @@ public class CryptoPrices {
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
-                .url("https://rest.coinapi.io/v1/exchangerate/BTC/USD/apikey-F57399AD-BD59-438E-BC05-5563053EA8D7/")
+                .url("https://rest.coinapi.io/v1/exchangerate/BTC/USD/apikey-5F14456E-057E-4045-B527-55C7FAA3D822/")
                 .get()
                 .addHeader("X-CoinAPI-Key", APIkey)
                 .build();

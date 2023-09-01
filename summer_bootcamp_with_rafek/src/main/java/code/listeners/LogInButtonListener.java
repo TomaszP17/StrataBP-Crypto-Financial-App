@@ -35,7 +35,7 @@ public class LogInButtonListener implements ActionListener {
                         SecondWindow secondWindow = new SecondWindow(firstWindow);
                         firstWindow.changeWindow(secondWindow.getMainPanel());
                         secondWindow.setCurrentUser();
-                        secondWindow.showClientWallet(client);
+                        //secondWindow.showClientWallet(client);
                     } else {
                         System.out.println("Wrong password!");
                     }

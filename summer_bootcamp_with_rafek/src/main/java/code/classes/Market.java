@@ -22,10 +22,9 @@ public class Market {
     public Market(SecondWindow secondWindow) {
         this.secondWindow = secondWindow;
         backButton.addActionListener(new BackButtonListener(secondWindow));
-        // Tworzenie i dodawanie wykresu do panelu chartPanel
-        PieChart pieChart = new PieChart("Chart Title"); // Zmodyfikuj tytuł według swoich potrzeb
+        PieChart pieChart = new PieChart("Chart Title");
         JPanel chartPanel = pieChart.createChartPanel();
-        chartPanel.setPreferredSize(new Dimension(500, 270)); // Ustaw odpowiednie wymiary
+        chartPanel.setPreferredSize(new Dimension(500, 270));
         centerPanel.add(chartPanel);
     }
 

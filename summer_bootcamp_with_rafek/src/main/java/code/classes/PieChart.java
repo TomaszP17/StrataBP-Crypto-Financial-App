@@ -1,5 +1,6 @@
 package code.classes;
 
+import code.classes.enums.Cryptocurrency;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -22,15 +23,19 @@ public class PieChart {
         PieDataset dataset = createDataset();
         JFreeChart chart = createChart(dataset);
         ChartPanel chartPanel = new ChartPanel(chart);
-        chartPanel.setPreferredSize(new Dimension(500, 270)); // Ustaw odpowiednie wymiary
+        chartPanel.setPreferredSize(new Dimension(800, 270));
         return chartPanel;
     }
 
     private PieDataset createDataset() {
+
+        Client client = ClientsController.findClientByUser(User.getCurrentUser());
+
         DefaultPieDataset result = new DefaultPieDataset();
-        result.setValue("Linux", 0.01);
-        result.setValue("Mac", 20);
-        result.setValue("Windows", 51);
+        result.setValue(Cryptocurrency.BTC, client.getWallet().get("BTC")*CryptoPrices.getBitcoinRate());
+        result.setValue(Cryptocurrency.ETH, client.getWallet().get("ETH")*CryptoPrices.getEtherumRate());
+        result.setValue(Cryptocurrency.ADA, client.getWallet().get("ADA") * CryptoPrices.getCardanoRate());
+        result.setValue(Cryptocurrency.USDT, client.getWallet().get("USDT") * CryptoPrices.getTetherRate());
         return result;
     }
 

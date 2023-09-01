@@ -71,7 +71,7 @@ public class DonateWindow extends JDialog {
             ClientsController.donateMoney(client.getEmail(), array.get(1).toString(), amount);
             System.out.println("Donated money to user: " + client.getEmail() + " currency: " + array.get(1).toString()
                     + " amount: " + amount);
-            secondWindow.updateClientWalletView(client);
+            //secondWindow.updateClientWalletView(client);
             //here if all operations were successful we show window with confirmation about that
             JOptionPane.showMessageDialog(this, "Operation successful!");
         }else {
