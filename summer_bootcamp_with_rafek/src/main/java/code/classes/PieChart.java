@@ -13,7 +13,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PieChart {
-    private String chartTitle;
+    private final String chartTitle;
 
     public PieChart(String chartTitle) {
         this.chartTitle = chartTitle;
@@ -41,9 +41,9 @@ public class PieChart {
 
     private JFreeChart createChart(PieDataset dataset) {
         JFreeChart chart = ChartFactory.createPieChart3D(
-                chartTitle,             // chart title
-                dataset,                // data
-                true,                   // include legend
+                chartTitle,
+                dataset,
+                true,
                 true,
                 false
         );
