@@ -48,9 +48,14 @@ public class SecondWindow {
     /**
      * todo ?
      */
-    public void setCurrentUser(){
-            userNameLabel.setText(User.getCurrentUser().getName());
+   public void setCurrentUser(){
+           userNameLabel.setText(User.getCurrentUser().getName());
+   }
+    public void setWalletValue(){
+        totalValueLabel.setText(Double.toString(ClientsController.findClientByUser(User.getCurrentUser()).getWalletValue()));
+
     }
+
 
     /**
      * TODO ?
@@ -59,11 +64,13 @@ public class SecondWindow {
     public void showClientWallet(Client client){
 
         List<String> array = new ArrayList<>();
+        setWalletValue();
+
 
         array.add(Cryptocurrency.BTC + ": " + client.getWallet().get("BTC").toString() + " -> $" + CryptoPrices.getAllBtcUserInUSD(client));
         array.add(Cryptocurrency.ETH + ": " + client.getWallet().get("ETH").toString()+ " -> $"+ CryptoPrices.getAllEthUserInUSD(client) );
         array.add(Cryptocurrency.ADA + ": " + client.getWallet().get("ADA").toString()+ " -> $" + CryptoPrices.getAllAdaUserInUSD(client) );
-        array.add(Cryptocurrency.USDT + ": " + client.getWallet().get("Tether USD").toString());
+        array.add(Cryptocurrency.USDT + ": " + client.getWallet().get("Tether USD").toString()+ " -> $" + CryptoPrices.getAllUsdtUserInUSD(client)  );
         centerList.setListData(array.toArray());
     }
 

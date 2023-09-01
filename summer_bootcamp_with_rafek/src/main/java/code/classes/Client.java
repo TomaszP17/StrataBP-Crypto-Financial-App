@@ -39,7 +39,7 @@ public class Client extends User {
         wallet.put("BTC", 10.0);
         wallet.put("ETH", 10.0);
         wallet.put("ADA", 10.0);
-        wallet.put("Tether USD", 0.0);
+        wallet.put("Tether USD", 10.0);
         this.limit = Limit.LIMIT_1000;
 
     }
@@ -62,5 +62,8 @@ public class Client extends User {
     public void deleteCrypto(String keyOfCrypto, double ammount){
         double sum = wallet.get(keyOfCrypto)-ammount;
         wallet.put(keyOfCrypto, sum);
+    }
+    public double getWalletValue(){
+        return Math.round(wallet.get("BTC")*CryptoPrices.getBitcoinRate()+wallet.get("ETH")*CryptoPrices.getEtherumRate()+wallet.get("ADA")*CryptoPrices.getCardanoRate()+wallet.get("Tether USD")*CryptoPrices.getTetherRate()*100)/100;
     }
 }
