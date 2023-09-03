@@ -67,12 +67,6 @@ public class MarketBuyButtonListener implements ActionListener {
     private boolean hasUserEnoughToBuy(String amount){
         double enteredAmountDouble = Double.parseDouble(amount);
         double useramountUSDT = Double.parseDouble(amountUSDT);
-        if(enteredAmountDouble < useramountUSDT){
-            System.out.println("User has less USDT than he want to buy");
-            return true;
-        }else {
-            System.out.println("User has enough USDT");
-            return false;
-        }
+        return enteredAmountDouble <= useramountUSDT;
     }
 }
