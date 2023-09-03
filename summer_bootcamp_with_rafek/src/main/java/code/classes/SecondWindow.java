@@ -38,7 +38,6 @@ public class SecondWindow {
         JPanel chartPanel = pieChart.createChartPanel();
         chartPanel.setPreferredSize(new Dimension(500, 270)); // Ustaw odpowiednie wymiary
         chartCenterPanel.add(chartPanel);
-        //TODO totalValueLabel.setText();
 
     }
     public JPanel getMainPanel(){
