@@ -32,10 +32,10 @@ public class PieChart {
         Client client = ClientsController.findClientByUser(User.getCurrentUser());
 
         DefaultPieDataset result = new DefaultPieDataset();
-        result.setValue(Cryptocurrency.BTC, client.getWallet().get("BTC")*CryptoPrices.getBitcoinRate());
-        result.setValue(Cryptocurrency.ETH, client.getWallet().get("ETH")*CryptoPrices.getEtherumRate());
-        result.setValue(Cryptocurrency.ADA, client.getWallet().get("ADA") * CryptoPrices.getCardanoRate());
-        result.setValue(Cryptocurrency.USDT, client.getWallet().get("USDT") * CryptoPrices.getTetherRate());
+        result.setValue(Cryptocurrency.BTC, client.getWallet().get("BTC")*CryptoPrices.getCryptoRateFromProgram(Cryptocurrency.BTC));
+        result.setValue(Cryptocurrency.ETH, client.getWallet().get("ETH")*CryptoPrices.getCryptoRateFromProgram(Cryptocurrency.ETH));
+        result.setValue(Cryptocurrency.ADA, client.getWallet().get("ADA") * CryptoPrices.getCryptoRateFromProgram(Cryptocurrency.ADA));
+        result.setValue(Cryptocurrency.USDT, client.getWallet().get("USDT") * CryptoPrices.getCryptoRateFromProgram(Cryptocurrency.USDT));
         return result;
     }
 

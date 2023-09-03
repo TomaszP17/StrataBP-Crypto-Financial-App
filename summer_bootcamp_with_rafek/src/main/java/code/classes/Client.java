@@ -1,5 +1,6 @@
 package code.classes;
 
+import code.classes.enums.Cryptocurrency;
 import code.classes.enums.Limit;
 
 import java.util.HashMap;
@@ -64,11 +65,12 @@ public class Client extends User {
         wallet.put(keyOfCrypto, sum);
     }
     public String getWalletValue(){
-        double result = (double) Math.round( ((wallet.get("BTC")*CryptoPrices.getBitcoinRate() ) +
-                (wallet.get("ETH")*CryptoPrices.getEtherumRate() ) +
-                (wallet.get("ADA")*CryptoPrices.getCardanoRate() ) +
-                (wallet.get("USDT")*CryptoPrices.getTetherRate())) *
+        double result = (double) Math.round( ((wallet.get("BTC")*CryptoPrices.getCryptoRateFromProgram(Cryptocurrency.BTC) ) +
+                (wallet.get("ETH")*CryptoPrices.getCryptoRateFromProgram(Cryptocurrency.ETH) ) +
+                (wallet.get("ADA")*CryptoPrices.getCryptoRateFromProgram(Cryptocurrency.ADA) ) +
+                (wallet.get("USDT")*CryptoPrices.getCryptoRateFromProgram(Cryptocurrency.USDT))) *
                  100) / 100;
+        System.out.println(result);
         return String.valueOf(result);
     }
 }

@@ -1,12 +1,9 @@
 package code.classes;
 
-import code.classes.enums.Cryptocurrency;
 import code.listeners.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class SecondWindow {
     private JPanel panel1;
@@ -36,7 +33,7 @@ public class SecondWindow {
         donateButton.addActionListener(new DonateButtonListener(this));
         historyButton.addActionListener(new HistoryButtonListener(this));
         marketButton.addActionListener(new MarketButtonListener(this));
-
+        CryptoPrices.setAllCryptoRates();
         PieChart pieChart = new PieChart("Wallet Value: " + ClientsController.findClientByUser(User.getCurrentUser()).getWalletValue() + "$"); // Zmodyfikuj tytuł według swoich potrzeb
         JPanel chartPanel = pieChart.createChartPanel();
         chartPanel.setPreferredSize(new Dimension(500, 270)); // Ustaw odpowiednie wymiary
