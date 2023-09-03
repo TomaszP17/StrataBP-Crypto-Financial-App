@@ -30,7 +30,7 @@ public class CryptoPrices {
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
-                .url("https://rest.coinapi.io/v1/exchangerate/"+crypto+"/USD/apikey-F57399AD-BD59-438E-BC05-5563053EA8D7/")
+                .url("https://rest.coinapi.io/v1/exchangerate/"+crypto+"/USDT/apikey-F57399AD-BD59-438E-BC05-5563053EA8D7/")
                 .get()
                 .addHeader("X-CoinAPI-Key", APIkey)
                 .build();
