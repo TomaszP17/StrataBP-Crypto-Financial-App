@@ -1,5 +1,6 @@
 package code.classes;
 
+import code.classes.enums.Cryptocurrency;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.OkHttpClient;
@@ -9,7 +10,7 @@ import okhttp3.Response;
 import java.io.IOException;
 
 public class CryptoPrices {
-    private static final String APIkey="5F14456E-057E-4045-B527-55C7FAA3D822";
+    private static final String APIkey="F57399AD-BD59-438E-BC05-5563053EA8D7";
     private static double bitcoinRate;
     private static double etherumRate;
     private static double cardanoRate;
@@ -18,6 +19,133 @@ public class CryptoPrices {
     public CryptoPrices() {
 
     }
+    public static double getCryptoRate(Cryptocurrency crypto){
+        OkHttpClient client = new OkHttpClient();
+
+        Request request = new Request.Builder()
+                .url("https://rest.coinapi.io/v1/exchangerate/"+crypto+"/USD/apikey-F57399AD-BD59-438E-BC05-5563053EA8D7/")
+                .get()
+                .addHeader("X-CoinAPI-Key", APIkey)
+                .build();
+
+        try (Response response = client.newCall(request).execute()) {
+            if (response.isSuccessful()) {
+                // Parse the JSON response
+                String jsonResponse = response.body().string();
+                ObjectMapper objectMapper = new ObjectMapper();
+                JsonNode jsonNode = objectMapper.readTree(jsonResponse);
+
+                // Now you can access the JSON data
+                double rate = (double) Math.round(jsonNode.get("rate").asDouble()*100)/100;
+                switch (crypto){
+                    case BTC -> bitcoinRate=rate;
+                    case ETH -> etherumRate=rate;
+                    case ADA -> cardanoRate=rate;
+                    case USDT -> tetherRate=rate;
+                }
+
+                String assetIdBase = jsonNode.get("asset_id_base").asText();
+                String assetIdQuote = jsonNode.get("asset_id_quote").asText();
+
+                System.out.println("Rate: " + rate);
+                System.out.println("Base Asset: " + assetIdBase);
+                System.out.println("Quote Asset: " + assetIdQuote);
+            } else {
+                System.out.println("Error: " + response.code() + " - " + response.message());
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        switch (crypto){
+            case BTC -> {
+                return bitcoinRate;
+            }
+            case ETH -> {
+                return etherumRate;
+            }
+            case ADA -> {
+                return cardanoRate;
+            }
+            case USDT -> {
+                return tetherRate;
+            }
+            default -> {
+                return 1;
+            }
+        }
+    }
+
+
+    public static void setAllCryptoRates(){
+        Cryptocurrency[] cryptos = {Cryptocurrency.BTC, Cryptocurrency.ETH,Cryptocurrency.ETH,Cryptocurrency.ADA, Cryptocurrency.USDT};
+        OkHttpClient client = new OkHttpClient();
+
+        for(Cryptocurrency crypto : cryptos){
+            Request request = new Request.Builder()
+                    .url("https://rest.coinapi.io/v1/exchangerate/"+crypto+"/USD/apikey-F57399AD-BD59-438E-BC05-5563053EA8D7/")
+                    .get()
+                    .addHeader("X-CoinAPI-Key", APIkey)
+                    .build();
+
+            try (Response response = client.newCall(request).execute()) {
+                if (response.isSuccessful()) {
+                    // Parse the JSON response
+                    String jsonResponse = response.body().string();
+                    ObjectMapper objectMapper = new ObjectMapper();
+                    JsonNode jsonNode = objectMapper.readTree(jsonResponse);
+
+                    // Now you can access the JSON data
+                    double rate = (double) Math.round(jsonNode.get("rate").asDouble()*100)/100;
+                    switch (crypto){
+                        case BTC -> bitcoinRate=rate;
+                        case ETH -> etherumRate=rate;
+                        case ADA -> cardanoRate=rate;
+                        case USDT -> tetherRate=rate;
+                    }
+
+
+                    String assetIdBase = jsonNode.get("asset_id_base").asText();
+                    String assetIdQuote = jsonNode.get("asset_id_quote").asText();
+
+                    System.out.println("Rate: " + rate);
+                    System.out.println("Base Asset: " + assetIdBase);
+                    System.out.println("Quote Asset: " + assetIdQuote);
+                } else {
+                    System.out.println("Error: " + response.code() + " - " + response.message());
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+
+        }
+        System.out.println(bitcoinRate);
+        System.out.println(etherumRate);
+        System.out.println(cardanoRate);
+        System.out.println(tetherRate);
+    }
+
+
+    public static double getCryptoRateFromProgram(Cryptocurrency crypto){
+        switch (crypto){
+            case BTC -> {
+                return bitcoinRate;
+            }
+            case ETH -> {
+                return etherumRate;
+            }
+            case ADA -> {
+                return cardanoRate;
+            }
+            case USDT -> {
+                return tetherRate;
+            }
+            default -> {
+                return 1;
+            }
+        }
+    }
+
     public static double getBitcoinRate() {
         OkHttpClient client = new OkHttpClient();
 
