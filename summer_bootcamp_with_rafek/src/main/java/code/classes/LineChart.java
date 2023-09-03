@@ -38,7 +38,7 @@ public class LineChart {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         switch (selectedItemFromComboBox){
             case BTC :
-                dataset.addValue(CryptoPrices.getCryptoRateFromProgram(Cryptocurrency.BTC) + 1000.0, "Bitcoin Value", LocalTime.now().minusHours(144));
+                dataset.addValue(CryptoPrices.getCryptoRateFromProgram(Cryptocurrency.BTC) + 1000.0, "Bitcoin Value", LocalDate.now().minusDays(144));
                 dataset.addValue(CryptoPrices.getCryptoRateFromProgram(Cryptocurrency.BTC) - 500.0, "Bitcoin Value", LocalTime.now().minusHours(120));
                 dataset.addValue(CryptoPrices.getCryptoRateFromProgram(Cryptocurrency.BTC) + 700.0, "Bitcoin Value", LocalTime.now().minusHours(96));
                 dataset.addValue(CryptoPrices.getCryptoRateFromProgram(Cryptocurrency.BTC) - 250.0, "Bitcoin Value", LocalTime.now().minusHours(72));

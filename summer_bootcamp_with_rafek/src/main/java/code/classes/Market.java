@@ -4,6 +4,7 @@ import code.classes.enums.Cryptocurrency;
 import code.listeners.BackButtonListener;
 import code.listeners.MarketBuyButtonListener;
 import code.listeners.MarketComboBoxListener;
+import code.listeners.MarketSellButtonListener;
 
 import javax.swing.*;
 import java.time.LocalDate;
@@ -33,6 +34,7 @@ public class Market {
         backButton.addActionListener(new BackButtonListener(secondWindow));
         comboBox.addActionListener(new MarketComboBoxListener(this));
         buyButton.addActionListener(new MarketBuyButtonListener(this));
+        sellButton.addActionListener(new MarketSellButtonListener(this));
 
         LineChart lineChart = new LineChart("Last week " + getCryptoName(comboBox) + " chart");
         JPanel chartPanel = lineChart.createChartPanel(getSelectedItemFromComboBox(comboBox));
