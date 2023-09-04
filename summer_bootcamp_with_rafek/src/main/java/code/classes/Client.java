@@ -37,12 +37,11 @@ public class Client extends User {
 
     public Client(String name, String lastname, String dateOfBirth, String email, String pesel, String password) {
         super(name, lastname, dateOfBirth, email, pesel, password);
-        wallet.put("BTC", 1.0);
+        wallet.put("BTC", 0.2);
         wallet.put("ETH", 7.0);
-        wallet.put("ADA", 10.0);
-        wallet.put("USDT", 2.0);
+        wallet.put("ADA", 250.0);
+        wallet.put("USDT", 1000.0);
         this.limit = Limit.LIMIT_1000;
-
     }
 
     /**

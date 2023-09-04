@@ -76,7 +76,6 @@ public class LineChart {
             default:
                 System.out.println("Problem with cryptocurrency as argument");
         }
-
         return dataset;
     }
 
