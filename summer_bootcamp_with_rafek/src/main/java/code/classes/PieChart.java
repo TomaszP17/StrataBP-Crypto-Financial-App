@@ -19,6 +19,10 @@ public class PieChart {
         this.chartTitle = chartTitle;
     }
 
+    /**
+     * Creating panel with pie chart
+     * @return - pie chart panel
+     */
     public JPanel createChartPanel() {
         PieDataset dataset = createDataset();
         JFreeChart chart = createChart(dataset);

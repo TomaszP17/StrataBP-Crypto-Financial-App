@@ -46,7 +46,7 @@
                   <gridbag weightx="0.0" weighty="0.0"/>
                 </constraints>
                 <properties>
-                  <text value="Donate Money to code.classes.User"/>
+                  <text value="Donate Money"/>
                 </properties>
               </component>
               <component id="b5a71" class="javax.swing.JButton" binding="transactionHistoryButton" default-binding="true">
@@ -55,7 +55,7 @@
                   <gridbag weightx="0.0" weighty="0.0"/>
                 </constraints>
                 <properties>
-                  <text value="code.classes.Transaction History"/>
+                  <text value="Transaction History"/>
                 </properties>
               </component>
               <component id="23097" class="javax.swing.JButton" binding="allUsersButton" default-binding="true">

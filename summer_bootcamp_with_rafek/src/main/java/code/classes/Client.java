@@ -12,6 +12,15 @@ public class Client extends User {
     private Map<String, Double> wallet = new HashMap<>();
     private Limit limit;
 
+    public Client(String name, String lastname, String dateOfBirth, String email, String pesel, String password) {
+        super(name, lastname, dateOfBirth, email, pesel, password);
+        wallet.put("BTC", 0.2);
+        wallet.put("ETH", 7.0);
+        wallet.put("ADA", 250.0);
+        wallet.put("USDT", 1000.0);
+        this.limit = Limit.LIMIT_1000;
+    }
+
     public void setLimit(Limit limit) {
         this.limit = limit;
     }
@@ -30,19 +39,7 @@ public class Client extends User {
 
     @Override
     public String toString() {
-        return "code.classes.Client{" +
-                "wallet=" + wallet +
-                '}';
-    }
-
-    public Client(String name, String lastname, String dateOfBirth, String email, String pesel, String password) {
-        super(name, lastname, dateOfBirth, email, pesel, password);
-        wallet.put("BTC", 1.0);
-        wallet.put("ETH", 7.0);
-        wallet.put("ADA", 10.0);
-        wallet.put("USDT", 2.0);
-        this.limit = Limit.LIMIT_1000;
-
+        return "Client{" + this.getName() + "wallet=" + wallet + '}';
     }
 
     /**
@@ -64,6 +61,11 @@ public class Client extends User {
         double sum = wallet.get(keyOfCrypto)-ammount;
         wallet.put(keyOfCrypto, sum);
     }
+
+    /**
+     * Calculating wallet Value and return it as String
+     * @return - wallet value
+     */
     public String getWalletValue(){
         double result = (double) Math.round( ((wallet.get("BTC")*CryptoPrices.getCryptoRateFromProgram(Cryptocurrency.BTC) ) +
                 (wallet.get("ETH")*CryptoPrices.getCryptoRateFromProgram(Cryptocurrency.ETH) ) +

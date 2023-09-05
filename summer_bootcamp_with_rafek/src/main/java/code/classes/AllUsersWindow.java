@@ -2,6 +2,7 @@ package code.classes;
 
 import code.listeners.AdminDeleteUserButtonListener;
 import code.listeners.AdminEditUserButtonListener;
+import code.listeners.AdminSearchUserButtonListener;
 import code.listeners.BackButtonToAdminPanelListener;
 
 import javax.swing.*;
@@ -27,15 +28,12 @@ public class AllUsersWindow {
     private String[] columnNames;
     private List<Client> data;
 
-
     public AllUsersWindow(AdminPanel adminPanel) {
         this.adminPanel = adminPanel;
+        ClientsController clientsController = new ClientsController();
+        data = clientsController.findAll();
         backButton.addActionListener(new BackButtonToAdminPanelListener(adminPanel));
-
-
-        searchUserButton.addActionListener(e -> {
-            System.out.println("Search Button Clicked!");
-        });
+        searchUserButton.addActionListener(new AdminSearchUserButtonListener(this));
 
         editUserButton.addActionListener(new AdminEditUserButtonListener(this));
 
@@ -45,14 +43,14 @@ public class AllUsersWindow {
     private void createAllTransactionTable(){
         columnNames = new String[]{"ID", "NAME", "LAST NAME", "EMAIL", "DATE OF BIRTH", "PESEL", "PASSWORD"};
         tableModel = new DefaultTableModel(columnNames, 0);
-        addUsers(tableModel);
+        addUsers(tableModel, data);
         table = new JTable(tableModel);
         centerPanel.add(new JScrollPane(table));
     }
 
-    public void addUsers(DefaultTableModel tableModel) {
+    public static void addUsers(DefaultTableModel tableModel, List<Client> data) {
         ClientsController clientsController = new ClientsController();
-        List<Client> data = clientsController.findAll();
+        data = clientsController.findAll();
         tableModel.setRowCount(0);
         for (Client client : data) {
             Object[] rowData = {
@@ -79,12 +77,10 @@ public class AllUsersWindow {
     }
     public void updateTable() {
         DefaultTableModel newModel = new DefaultTableModel(columnNames, 0);
-        addUsers(newModel);
+        addUsers(newModel, data);
         table.setModel(newModel);
     }
     public void setTableWithEditedData(List<String> newArray){
-        /*JTable table = allUsersWindow.getTable();
-        DefaultTableModel tableModel = (DefaultTableModel) table.getModel();*/
         int selectedRow = table.getSelectedRow();
 
         if(selectedRow >= 0){
@@ -92,5 +88,9 @@ public class AllUsersWindow {
                 tableModel.setValueAt(newArray.get(i), selectedRow, i);
             }
         }
+    }
+
+    public String[] getColumnNames() {
+        return columnNames;
     }
 }

@@ -49,6 +49,7 @@ public class SendButtonListener implements ActionListener {
                             crypto,
                             amount);
                    //secondWindow.updateClientWalletView(client1);
+                    secondWindow.updatePieChart();
                     JOptionPane.showMessageDialog(null, "Operation successful!");
                 }
             }else {

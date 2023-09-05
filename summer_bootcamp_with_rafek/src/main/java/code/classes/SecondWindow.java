@@ -34,11 +34,7 @@ public class SecondWindow {
         historyButton.addActionListener(new HistoryButtonListener(this));
         marketButton.addActionListener(new MarketButtonListener(this));
         CryptoPrices.setAllCryptoRates();
-        PieChart pieChart = new PieChart("Wallet Value: " + ClientsController.findClientByUser(User.getCurrentUser()).getWalletValue() + "$"); // Zmodyfikuj tytuł według swoich potrzeb
-        JPanel chartPanel = pieChart.createChartPanel();
-        chartPanel.setPreferredSize(new Dimension(500, 270)); // Ustaw odpowiednie wymiary
-        chartCenterPanel.add(chartPanel);
-
+        updatePieChart();
     }
     public JPanel getMainPanel(){
         return panel1;
@@ -62,5 +58,15 @@ public class SecondWindow {
         firstWindow.revalidate();
         firstWindow.repaint();
         firstWindow.pack();
+    }
+
+    /**
+     * Updating PieChart view with new data
+     */
+    public void updatePieChart(){
+        PieChart pieChart = new PieChart("Wallet Value: " + ClientsController.findClientByUser(User.getCurrentUser()).getWalletValue() + "$");
+        JPanel chartPanel = pieChart.createChartPanel();
+        chartPanel.setPreferredSize(new Dimension(500, 270));
+        chartCenterPanel.add(chartPanel);
     }
 }

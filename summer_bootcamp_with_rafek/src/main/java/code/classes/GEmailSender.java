@@ -7,6 +7,15 @@ import jakarta.mail.internet.MimeMessage;
 import java.util.Properties;
 
 public class GEmailSender {
+
+    /**
+     * Sending an email
+     * @param to - receiver
+     * @param from - sender
+     * @param subject - email subject
+     * @param text - content of the email
+     * @return - success flag
+     */
     public boolean sendEmail(String to, String from, String subject, String text){
         boolean flag = false;
 
@@ -34,7 +43,6 @@ public class GEmailSender {
             message.setFrom(new InternetAddress(from));
             message.setSubject(subject);
             message.setText(text);
-
             Transport.send(message);
 
             flag = true;
@@ -42,7 +50,6 @@ public class GEmailSender {
         }catch (Exception e){
             e.printStackTrace();
         }
-
         return flag;
     }
 }

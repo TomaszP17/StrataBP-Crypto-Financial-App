@@ -44,8 +44,6 @@ public class LogInButtonListener implements ActionListener {
                 }
             }
         }
-
-
     }
 
     public JPanel createLogInPanel() {

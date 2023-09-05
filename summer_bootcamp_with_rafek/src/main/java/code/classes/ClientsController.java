@@ -6,6 +6,9 @@ import java.util.List;
 public class ClientsController {
     private static List<Client> clients = new ArrayList<>();
 
+    /**
+     * static array with clients
+     */
     static {
         clients.add(new Client("Rafal", "Przybyl", "12-33-00",
                 "rafalprzybyl17@gmail.com","111","haslo1" ));
@@ -17,8 +20,8 @@ public class ClientsController {
                 "test","333","test" ));
         clients.add(new Client("admin","admin","13-07-2003",
                     "admin","admin","admin"));
-        clients.add(new Client("Tomasz", "Plucinski", "13-07-2023",
-                "tplucinski15@gmail.com","03xd","haslo"));
+        clients.add(new Client("Tomasz", "P", "13-07-2023",
+                "chuwduminer@gmail.com","03xd","haslo"));
     }
 
     /**

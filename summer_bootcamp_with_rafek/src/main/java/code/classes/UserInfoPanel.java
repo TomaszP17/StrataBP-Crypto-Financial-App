@@ -17,7 +17,7 @@ public class UserInfoPanel {
     private JButton editDataButton;
     private JButton showPasswordButton;
     private JButton hidePasswordButton;
-    private SecondWindow secondWindow;
+    private final SecondWindow secondWindow;
     private DefaultListModel<String> listModel = new DefaultListModel<>();
     private Client currentClient;
 
