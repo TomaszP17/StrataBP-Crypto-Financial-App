@@ -8,9 +8,11 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class CryptoPrices {
-    private static final String APIkey="F57399AD-BD59-438E-BC05-5563053EA8D7";
+    private static final String APIkey="4379B04E-45C7-4A00-BB38-9E4D64A9E371";
     private static double bitcoinRate;
     private static double etherumRate;
     private static double cardanoRate;
@@ -19,6 +21,49 @@ public class CryptoPrices {
     public CryptoPrices() {
 
     }
+
+
+
+    public static ArrayList<Double> getCryptoRatesFromWeek(Cryptocurrency crypto){
+        ArrayList<Double> cryptoRates = new ArrayList<>();
+        double rate;
+
+        OkHttpClient client = new OkHttpClient();
+
+
+        LocalDateTime current_date = LocalDateTime.now().minusHours(24).withNano(0);
+        LocalDateTime previous_week_date = LocalDateTime.now().minusDays(7).withNano(0);
+
+        System.out.println(current_date);
+        Request request = new Request.Builder()
+                .url("https://rest.coinapi.io/v1/exchangerate/"+crypto+"/USDT/history/apikey-4379B04E-45C7-4A00-BB38-9E4D64A9E371?period_id=1DAY&time_start="+previous_week_date+"&time_end="+current_date)
+                .get()
+                .addHeader("X-CoinAPI-Key", APIkey)
+                .build();
+        System.out.println(request);
+
+        try (Response response = client.newCall(request).execute()) {
+            if (response.isSuccessful()) {
+                // Parse the JSON response
+                String jsonResponse = response.body().string();
+                ObjectMapper objectMapper = new ObjectMapper();
+                JsonNode jsonNode = objectMapper.readTree(jsonResponse);
+
+                for(int i = 0; i<jsonNode.size(); i++){
+
+                    cryptoRates.add((double) Math.round(jsonNode.get(i).get("rate_close").asDouble()*1000)/1000);
+                }
+
+            } else {
+                System.out.println("Error: " + response.code() + " - " + response.message());
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        return cryptoRates;
+    }
+
 
     /**
      *

@@ -20,4 +20,5 @@ public class DonateButtonListener implements ActionListener {
         donateWindow.pack();
         donateWindow.setVisible(true);
     }
+
 }

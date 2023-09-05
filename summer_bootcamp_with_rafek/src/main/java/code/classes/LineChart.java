@@ -10,7 +10,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import javax.swing.*;
 import java.awt.*;
 import java.time.LocalDate;
-import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class LineChart {
 
@@ -47,43 +47,54 @@ public class LineChart {
      * @return - dataset
      */
     private DefaultCategoryDataset createDataSet(Cryptocurrency selectedItemFromComboBox){
+        ArrayList<Double> cryptoRates = new ArrayList<>();
+
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         switch (selectedItemFromComboBox){
+
             case BTC :
-                dataset.addValue(CryptoPrices.getCryptoRateFromProgram(Cryptocurrency.BTC) + 1000.0, "Bitcoin Value", LocalDate.now().minusDays(144));
-                dataset.addValue(CryptoPrices.getCryptoRateFromProgram(Cryptocurrency.BTC) - 500.0, "Bitcoin Value", LocalTime.now().minusHours(120));
-                dataset.addValue(CryptoPrices.getCryptoRateFromProgram(Cryptocurrency.BTC) + 700.0, "Bitcoin Value", LocalTime.now().minusHours(96));
-                dataset.addValue(CryptoPrices.getCryptoRateFromProgram(Cryptocurrency.BTC) - 250.0, "Bitcoin Value", LocalTime.now().minusHours(72));
-                dataset.addValue(CryptoPrices.getCryptoRateFromProgram(Cryptocurrency.BTC) - 2000.0, "Bitcoin Value", LocalTime.now().minusHours(48));
-                dataset.addValue(CryptoPrices.getCryptoRateFromProgram(Cryptocurrency.BTC), "Bitcoin Value", LocalTime.now().minusHours(24).toString());
+                cryptoRates = CryptoPrices.getCryptoRatesFromWeek(Cryptocurrency.BTC);
+                dataset.addValue(cryptoRates.get(0), "Bitcoin Value", LocalDate.now().minusDays(6));
+                dataset.addValue(cryptoRates.get(1), "Bitcoin Value", LocalDate.now().minusDays(5));
+                dataset.addValue(cryptoRates.get(2), "Bitcoin Value", LocalDate.now().minusDays(4));
+                dataset.addValue(cryptoRates.get(3), "Bitcoin Value", LocalDate.now().minusDays(3));
+                dataset.addValue(cryptoRates.get(4), "Bitcoin Value", LocalDate.now().minusDays(2));
+                dataset.addValue(cryptoRates.get(5), "Bitcoin Value", LocalDate.now().minusDays(1));
                 dataset.addValue(CryptoPrices.getCryptoRateFromProgram(Cryptocurrency.BTC), "Bitcoin Value", LocalDate.now());
                 break;
             case ETH:
-                dataset.addValue(15, "schools", "01.09.2023");
-                dataset.addValue(30, "schools", "02.09.2023");
-                dataset.addValue(40, "schools", "03.09.2023");
-                dataset.addValue(25, "schools", "04.09.2023");
-                dataset.addValue(10, "schools", "05.09.2023");
-                dataset.addValue(50, "schools", "06.09.2023");
-                dataset.addValue(35, "schools", "07.09.2023");
+                cryptoRates = CryptoPrices.getCryptoRatesFromWeek(Cryptocurrency.ETH);
+                dataset.addValue(cryptoRates.get(0), "Ethereum Value", LocalDate.now().minusDays(6));
+                dataset.addValue(cryptoRates.get(1), "Ethereum Value", LocalDate.now().minusDays(5));
+                dataset.addValue(cryptoRates.get(2), "Ethereum Value", LocalDate.now().minusDays(4));
+                dataset.addValue(cryptoRates.get(3), "Ethereum Value", LocalDate.now().minusDays(3));
+                dataset.addValue(cryptoRates.get(4), "Ethereum Value", LocalDate.now().minusDays(2));
+                dataset.addValue(cryptoRates.get(5), "Ethereum Value", LocalDate.now().minusDays(1));
+
+                dataset.addValue(CryptoPrices.getCryptoRateFromProgram(Cryptocurrency.ETH), "Ethereum Value", LocalDate.now());
                 break;
             case ADA:
-                dataset.addValue(15, "schools", "01.09.2023");
-                dataset.addValue(30, "schools", "02.09.2023");
-                dataset.addValue(40, "schools", "03.09.2023");
-                dataset.addValue(25, "schools", "04.09.2023");
-                dataset.addValue(10, "schools", "05.09.2023");
-                dataset.addValue(50, "schools", "06.09.2023");
-                dataset.addValue(35, "schools", "07.09.2023");
+                cryptoRates = CryptoPrices.getCryptoRatesFromWeek(Cryptocurrency.ADA);
+                dataset.addValue(cryptoRates.get(0), "Cardano Value", LocalDate.now().minusDays(6));
+                dataset.addValue(cryptoRates.get(1), "Cardano Value", LocalDate.now().minusDays(5));
+                dataset.addValue(cryptoRates.get(2), "Cardano Value", LocalDate.now().minusDays(4));
+                dataset.addValue(cryptoRates.get(3), "Cardano Value", LocalDate.now().minusDays(3));
+                dataset.addValue(cryptoRates.get(4), "Cardano Value", LocalDate.now().minusDays(2));
+                dataset.addValue(cryptoRates.get(5), "Cardano Value", LocalDate.now().minusDays(1));
+
+                dataset.addValue(CryptoPrices.getCryptoRateFromProgram(Cryptocurrency.ADA), "Cardano Value", LocalDate.now());
                 break;
             case USDT:
-                dataset.addValue(15, "schools", "01.09.2023");
-                dataset.addValue(30, "schools", "02.09.2023");
-                dataset.addValue(40, "schools", "03.09.2023");
-                dataset.addValue(25, "schools", "04.09.2023");
-                dataset.addValue(10, "schools", "05.09.2023");
-                dataset.addValue(50, "schools", "06.09.2023");
-                dataset.addValue(35, "schools", "07.09.2023");
+                cryptoRates = CryptoPrices.getCryptoRatesFromWeek(Cryptocurrency.USDT);
+
+                dataset.addValue(cryptoRates.get(0), "Tether Value", LocalDate.now().minusDays(6));
+                dataset.addValue(cryptoRates.get(1), "Tether Value", LocalDate.now().minusDays(5));
+                dataset.addValue(cryptoRates.get(2), "Tether Value", LocalDate.now().minusDays(4));
+                dataset.addValue(cryptoRates.get(3), "Tether Value", LocalDate.now().minusDays(3));
+                dataset.addValue(cryptoRates.get(4), "Tether Value", LocalDate.now().minusDays(2));
+                dataset.addValue(cryptoRates.get(5), "Tether Value", LocalDate.now().minusDays(1));
+
+                dataset.addValue(CryptoPrices.getCryptoRateFromProgram(Cryptocurrency.USDT), "Tether Value", LocalDate.now());
                 break;
             default:
                 System.out.println("Problem with cryptocurrency as argument");

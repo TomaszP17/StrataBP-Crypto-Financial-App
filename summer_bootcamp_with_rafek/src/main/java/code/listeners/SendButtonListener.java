@@ -111,10 +111,21 @@ public class SendButtonListener implements ActionListener {
         return !receiver.getPesel().equals(sender.getPesel());
     }
     public boolean isDataCorrect(List<String> array) {
-        //we need to check if someone has crypto to send
         String crypto = array.get(0);
         String amountToSend = array.get(1);
         String receiverEmail = array.get(2);
+
+        //checking if amuntToSend is a number
+        try {
+            long amountInLong = Long.parseLong(amountToSend);
+        }
+        catch (Exception e){
+            System.out.println(false);
+            return false;
+        }
+
+        //we need to check if someone has crypto to send
+
         //TODO need wallet to verify if user has money to send
         Client currClient = ClientsController.findClientByUser(User.getCurrentUser());
         Map<String, Double> clientWallet = currClient.getWallet();

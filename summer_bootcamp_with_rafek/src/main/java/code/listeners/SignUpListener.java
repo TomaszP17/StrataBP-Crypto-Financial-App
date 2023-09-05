@@ -8,6 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SignUpListener implements ActionListener {
 
@@ -76,7 +78,73 @@ public class SignUpListener implements ActionListener {
             }
         }
         System.out.println(array);
+        System.out.println(isDataOk(array));
         return array;
+    }
+    //TODO Pop up allert that data is invalid
+    public boolean isDataOk(List<String> arrayWithParameters){
+
+        //checking length of name
+        String name = arrayWithParameters.get(0);
+        if(name.length()>20||name.length()<3)
+        {
+
+            return false;
+        }
+        //checking length of last name
+        String lastname = arrayWithParameters.get(1);
+        if(lastname.length()>20||lastname.length()<3)
+        {
+
+            return false;
+        }
+        //checking if String is in date format
+        String dateString = arrayWithParameters.get(2);
+        String datePattern = "\\d{2}-\\d{2}-\\d{4}";
+
+        // Create a Pattern object
+        Pattern pattern = Pattern.compile(datePattern);
+
+        // Create a Matcher object
+        Matcher matcher = pattern.matcher(dateString);
+
+        // Check if the input string matches the date pattern
+        if (matcher.matches()) {
+            System.out.println("The string is in date format (dd-MM-yyyy).");
+        } else {
+            System.out.println("The string is not in date format.");
+            return false;
+        }
+        //Checking if is email consist @
+        String email = arrayWithParameters.get(3);
+        if(email.contains("@")==false){
+            return false;
+        }
+
+        //checking if is pesel consist only 11 digits
+        String pesel = arrayWithParameters.get(4);
+        try {
+                long peselInInt = Long.parseLong(pesel);
+                if(pesel.length() != 11) {
+                    System.out.println("asd");
+                    return false;
+                }
+        }
+        catch (Exception e){
+            return false;
+        }
+
+        //Checking length of password
+        String password = arrayWithParameters.get(5);
+        if(password.length()>20||password.length()<3)
+        {
+
+            return false;
+        }
+        return true;
+
+
+
     }
 
 

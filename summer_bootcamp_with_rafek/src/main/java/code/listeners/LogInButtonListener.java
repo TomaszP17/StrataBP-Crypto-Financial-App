@@ -80,4 +80,5 @@ public class LogInButtonListener implements ActionListener {
         AdminPanel adminPanel = new AdminPanel(firstWindow);
         firstWindow.changeWindow(adminPanel.getMainPanel());
     }
+
 }
