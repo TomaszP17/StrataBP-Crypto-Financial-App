@@ -31,7 +31,6 @@ public class TransactionHistoryWindow {
         createAllTransactionList();
     }
     public void createAllTransactionList(){
-        //code.classes.Client currentClient = code.classes.ClientsController.findClientByUser(code.classes.User.getCurrentUser());
         data = TransactionController.getTransactionList();
         columnNames = new String[]{"ID", "FROM", "TO", "CRYPTO", "AMOUNT", "DATE"};
         tableModel = new DefaultTableModel(columnNames, 0);

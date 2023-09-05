@@ -39,7 +39,7 @@ public class SignUpListener implements ActionListener {
         JTextField nameTextField = new JTextField(20);
         JLabel lastNameLabel = new JLabel("Last Name: ");
         JTextField lastNameTextField = new JTextField(20);
-        JLabel dateLabel = new JLabel("Date of Birth: ");
+        JLabel dateLabel = new JLabel("Date of Birth: (Format: DD-MM-YYYY)");
         JTextField dateTextField = new JTextField(20);
         JLabel emailLabel = new JLabel("Email:");
         JTextField emailTextField = new JTextField(20);

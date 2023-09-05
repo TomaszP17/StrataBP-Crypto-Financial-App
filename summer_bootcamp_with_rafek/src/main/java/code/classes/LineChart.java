@@ -19,6 +19,12 @@ public class LineChart {
     public LineChart(String chartTitle) {
         this.chartTitle = chartTitle;
     }
+
+    /**
+     * Creating line chart panel  with specific data
+     * @param selectedItemFromComboBox - selectedCryptocurrency
+     * @return - chart panel
+     */
     public JPanel createChartPanel(Cryptocurrency selectedItemFromComboBox){
         JFreeChart lineChart = ChartFactory.createLineChart(
                 chartTitle,
@@ -34,6 +40,12 @@ public class LineChart {
         chartPanel.setPreferredSize(new Dimension(800, 270));
         return chartPanel;
     }
+
+    /**
+     * Creating data set for chart panel with crypto values and date
+     * @param selectedItemFromComboBox - selectedCryptocurrency
+     * @return - dataset
+     */
     private DefaultCategoryDataset createDataSet(Cryptocurrency selectedItemFromComboBox){
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         switch (selectedItemFromComboBox){

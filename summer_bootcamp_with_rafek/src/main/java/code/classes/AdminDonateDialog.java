@@ -46,7 +46,6 @@ public class AdminDonateDialog extends JDialog {
     }
 
     private void onOK() {
-        // add your code here
         List<String> arrayWithDataString = getDataFromFields(centerPanel);
         String crypto = arrayWithDataString.get(0);
         double amountDouble = parseDouble(arrayWithDataString.get(1));

@@ -8,6 +8,10 @@ import java.util.Scanner;
 
 public class GeneratorFileWithCode {
 
+    /**
+     * Generating file with recovery code to recovery password option
+     * @param recoveryCode - generated code
+     */
     public void generateFile(String recoveryCode){
         try{
             File file = new File("./files/rcode.txt");
@@ -27,6 +31,10 @@ public class GeneratorFileWithCode {
         }
     }
 
+    /**
+     * Getting recovery code from file where is code to recovery password
+     * @return - recovery code
+     */
     public String getRecoveryCodeFromFile(){
         try{
             File file = new File("./files/rcode.txt");

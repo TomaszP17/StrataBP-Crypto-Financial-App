@@ -12,10 +12,6 @@ public enum Limit {
         this.limit = limit;
     }
 
-    public int getLimitValue() {
-        return limit;
-    }
-
     @Override
     public String toString() {
         return Integer.toString(limit);
